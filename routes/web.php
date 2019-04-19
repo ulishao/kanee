@@ -12,6 +12,6 @@
 */
 
 Route::get('/', function () {
-    return 'hello api';
+    return 'hello aaa';
 
 });
