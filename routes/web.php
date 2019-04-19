@@ -12,6 +12,6 @@
 */
 
 Route::get('/', function () {
-    return 'hello 111222';
+    return 'hello cc';
 
 });
