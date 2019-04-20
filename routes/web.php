@@ -12,6 +12,6 @@
 */
 
 Route::get('/', function () {
-    return 'hello cc';
+    return 'hello git';
 
 });
