@@ -47,9 +47,9 @@ class Tous extends Command
 
     public function handle()
     {
-        $urls = ['https://www.woyaogexing.com/touxiang/nv/index.html'];
-        for($i=2;$i<1527;$i++){
-            $urls[] = 'https://www.woyaogexing.com/touxiang/nv/index_'.$i.'.html';
+        $urls = ['https://www.woyaogexing.com/touxiang/weixin/index.html'];
+        for($i=2;$i<40;$i++){
+            $urls[] = 'https://www.woyaogexing.com/touxiang/weixin/index_'.$i.'.html';
         }
        // $urls = [ 'https://www.woyaogexing.com/touxiang/index.html' , 'https://www.woyaogexing.com/touxiang/index_2.html' , 'https://www.woyaogexing.com/touxiang/index_3.html' , 'https://www.woyaogexing.com/touxiang/index_4.html' , 'https://www.woyaogexing.com/touxiang/index_5.html' , 'https://www.woyaogexing.com/touxiang/index_6.html' ];
         foreach ($urls as $url) {
