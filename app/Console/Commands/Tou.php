@@ -104,7 +104,7 @@ class Tou extends Command
                     $this->info("请求第 $index 个请求" .$title);
 
                     Img::create(
-                        [ 'id' => Uuid::generate() , 'img' => $host , 'imgs' => $urlImg , 'title' => $title , 'source_url' => $this->url  , 'category_id'=>3]
+                        [ 'id' => Uuid::generate() , 'img' => $host , 'imgs' => $urlImg , 'title' => $title , 'source_url' => $this->url  , 'category_id'=>6]
                     );
                     $this->countedAndCheckEnded();
                 } catch (\InvalidArgumentException|\Illuminate\Database\QueryException $exception) {

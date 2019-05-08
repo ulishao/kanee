@@ -47,30 +47,63 @@ class Tous extends Command
 
     public function handle()
     {
-        $urls = ['https://www.woyaogexing.com/touxiang/nv/index.html'];
-        for($i=2;$i<1527;$i++){
-            $urls[] = 'https://www.woyaogexing.com/touxiang/nv/index_'.$i.'.html';
+        $data = [
+            [
+                'name'=>'qinglv',
+                'num'=>'463',
+            ],
+            [
+                'name'=>'nan',
+                'num'=>'463',
+            ],
+            [
+                'name'=>'nv',
+                'num'=>'1527',
+            ],
+            [
+                'name'=>'katong',
+                'num'=>'318',
+            ],
+            [
+                'name'=>'fengjing',
+                'num'=>'50',
+            ],
+            [
+                'name'=>'weixin',
+                'num'=>'40',
+            ],
+        ];
+        foreach ($data as $datum){
+            $this->D_run ($datum['num'],$datum['name']);
         }
-       // $urls = [ 'https://www.woyaogexing.com/touxiang/index.html' , 'https://www.woyaogexing.com/touxiang/index_2.html' , 'https://www.woyaogexing.com/touxiang/index_3.html' , 'https://www.woyaogexing.com/touxiang/index_4.html' , 'https://www.woyaogexing.com/touxiang/index_5.html' , 'https://www.woyaogexing.com/touxiang/index_6.html' ];
+
+    }
+
+    public function D_run($num,$key)
+    {
+        $urls = [
+            'https://www.woyaogexing.com/touxiang/'.$key.'/index.html'
+        ];
+        for($i=2;$i<$num;$i++){
+            $urls[] = 'https://www.woyaogexing.com/touxiang/'.$key.'/index_'.$i.'.html';
+        }
         foreach ($urls as $url) {
             try {
                 $http    = new Client();
                 $data    = $http->get( $url )->getBody()->getContents();
                 $crawler = new Crawler();
                 $crawler->addHtmlContent( $data );
-//                $title = $crawler->filterXPath('//h1')->text();
-                $crawler->filterXPath( '//div[@class="pMain"]/div/a[1]/@href' )->each(
+                $nodel = $crawler->filterXPath( '//div[@class="pMain"]/div/a[1]/@href' )->each(
                     function ( Crawler $node , $i ) {
-//                    return ;
-                        echo $node->text();
-                        Redis::lpush( 'urls' , $node->text() );
+
+                        $this->info ($node->text());
+                        return $node->text();
                     }
                 );
+                Redis::lpush( 'urls.'.$key , $nodel );
             } catch (\InvalidArgumentException $exception) {
                 echo 'error';
             }
         }
-
-
     }
 }
