@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return 'hello aaa';
+    return 'hello git';
 
 });
 Route::get('/img', 'ImgController@index');
