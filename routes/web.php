@@ -15,3 +15,4 @@ Route::get('/', function () {
     return 'hello aaa';
 
 });
+Route::get('/img', 'ImgController@index');
