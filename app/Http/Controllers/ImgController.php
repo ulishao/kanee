@@ -10,6 +10,6 @@ class ImgController extends Controller
 {
     public function index()
     {
-        return Resource::collection( Img::paginate( 3 ) );
+        return Resource::collection( Img::paginate( 2 ) );
     }
 }

@@ -30,7 +30,7 @@ class Img extends Eloquent
 
     protected $casts = [ 'size' => 'int' ];
 
-    protected $fillable = [ 'title' , 'id' , 'imgs' , 'img' , 'size' , 'source_url' , ];
+    protected $fillable = [ 'title' , 'id' , 'imgs' , 'img' , 'size' , 'source_url' ,'category_id' ];
 
     public function getImgsAttribute( $value )
     {
