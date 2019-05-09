@@ -34,6 +34,10 @@ class Img extends Eloquent
 
     public function getImgsAttribute( $value )
     {
-        return array_filter( explode( ',' , $value ) );
+        $data = [];
+        foreach ((array)array_filter( explode( ',' , $value ) ) as $value){
+            $data[] = $value.'?'.rand(1,9999);
+        }
+        return $data;
     }
 }
