@@ -2,15 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Business\ProxyIpBusiness;
 use App\Models\Img;
-use Doctrine\DBAL\Query\QueryException;
 use GuzzleHttp\Pool;
-use function GuzzleHttp\Psr7\parse_header;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Redis;
-use mysql_xdevapi\Exception;
 use Webpatser\Uuid\Uuid;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -33,7 +29,7 @@ class Tou extends Command
 
     private $totalPageCount;
     private $counter = 1;
-    private $concurrency = 30;  // 同时并发抓取
+    private $concurrency = 2;  // 同时并发抓取
     /**
      * Create a new command instance.
      *
@@ -43,7 +39,8 @@ class Tou extends Command
     {
         parent::__construct();
     }
-    public $url = '';
+    public $url = [];
+    public $category_id = [];
     public function handle()
     {
         //$this->totalPageCount = count($this->users);
@@ -54,15 +51,71 @@ class Tou extends Command
             'Accept-Language' => 'zh-CN,zh;q=0.9,en;q=0.8,sm;q=0.7',
             'Accept-Encoding' => 'gzip'
         ]]);
-
+//        [
+//            'name'=>'qinglv',
+//            'num'=>'463',
+//        ],
+//            [
+//                'name'=>'nan',
+//                'num'=>'463',
+//            ],
+//            [
+//                'name'=>'nv',
+//                'num'=>'1527',
+//            ],
+//            [
+//                'name'=>'katong',
+//                'num'=>'318',
+//            ],
+//            [
+//                'name'=>'fengjing',
+//                'num'=>'50',
+//            ],
+//            [
+//                'name'=>'weixin',
+//                'num'=>'40',
+//            ],
         $requests = function ($total) use ($client) {
             while (true){
-                $uri = 'https://www.woyaogexing.com' . Redis::lpop( 'urls' );
-                $this->url = $uri;
-                if ( is_null( $uri ) ) {
-                    sleep( 1000000 );
-                    continue;
+                $key = empty(Redis::keys( 'urls.*')[0])?null:Redis::keys( 'urls.*')[0];
+//                $key = 'https://www.woyaogexing.com/touxiang/nv/2019/780849.html';
+                if(is_null($key)){
+                    dd('停止');
                 }
+                if(strpos($key,'nv'))
+                {
+                    $uu = Redis::lpop( 'urls.nv');
+                    $this->category_id[] = 3;
+                }
+                if(strpos($key,'weixin'))
+                {
+                    $uu = Redis::lpop( 'urls.weixin');
+                    $this->category_id[] = 6;
+                }
+                if(strpos($key,'qinglv'))
+                {
+                    $uu = Redis::lpop( 'urls.qinglv');
+                    $this->category_id[] = 1;
+                }
+                if(strpos($key,'nan'))
+                {
+                    $uu = Redis::lpop( 'urls.nan');
+                    $this->category_id[] = 2;
+                }
+                if(strpos($key,'katong'))
+                {
+                    $uu = Redis::lpop( 'urls.katong');
+                    $this->category_id[] = 4;
+                }
+                if(strpos($key,'fengjing'))
+                {
+                    $uu = Redis::lpop( 'urls.fengjing');
+                    $this->category_id[] = 5;
+                }
+                $uri = 'https://www.woyaogexing.com' . $uu;
+//                var_dump($this->category_id);
+//                dd($uri);
+                $this->url[] = $uri;
                 yield function() use ($client, $uri) {
                     return $client->getAsync($uri);
                 };
@@ -72,6 +125,7 @@ class Tou extends Command
         $pool = new Pool($client, $requests($this->totalPageCount), [
             'concurrency' => $this->concurrency,
             'fulfilled'   => function ($response, $index){
+
                 $content = $response->getBody()->getContents();
                 $code = mb_detect_encoding($content, array("ASCII",'UTF-8',"GB2312","GBK",'BIG5'));
                 if($code == 'UTF-8')
@@ -85,7 +139,7 @@ class Tou extends Command
                     $crawler = new Crawler();
                     $crawler->addHtmlContent($outPageTxt);
                     $title  = $crawler->filterXPath( '//h1' )->text();
-                    $urls   = $crawler->filterXPath( '//ul/li/a/img/@src' )->each(
+                    $urls   = $crawler->filterXPath( '//ul[@class="artCont cl"]/li/a/img/@src | //ul[@class="artCont cl"]/li/img/@src' )->each(
                         function ( Crawler $node , $i ) {
                             return $node->text();
                         }
@@ -101,11 +155,18 @@ class Tou extends Command
                             echo 'error';
                         }
                     }
-                    $this->info("请求第 $index 个请求" .$title);
 
-                    Img::create(
-                        [ 'id' => Uuid::generate() , 'img' => $host , 'imgs' => $urlImg , 'title' => $title , 'source_url' => $this->url  , 'category_id'=>6]
-                    );
+//                    $this->info("请求第 $index 个请求" .$urlImg);
+                    $this->info("请求第 $index 个请求" .$title);
+                    $data = [
+                        'id' => Uuid::generate() ,
+                              'img' => $host ,
+                              'imgs' => $urlImg ,
+                              'title' => $title ,
+                              'source_url' => $this->url[$index]  ,
+                              'category_id'=>$this->category_id[$index]
+                    ];
+                    Img::create($data);
                     $this->countedAndCheckEnded();
                 } catch (\InvalidArgumentException|\Illuminate\Database\QueryException $exception) {
                     echo 'error';

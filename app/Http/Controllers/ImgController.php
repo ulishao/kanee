@@ -10,6 +10,6 @@ class ImgController extends Controller
 {
     public function index()
     {
-        return Resource::collection( Img::paginate( 2 ) );
+        return Resource::collection( Img::where(['category_id'=>request()->get('category_id')])->paginate( 2 ) );
     }
 }
