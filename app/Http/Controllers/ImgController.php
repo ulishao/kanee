@@ -17,7 +17,10 @@ class ImgController extends Controller
 
     public function url( Request $request )
     {
+        //使用图片头输出浏览器
+        header( "Content-Type: image/jpeg;text/html; charset=utf-8" );
         $http = new Client();
-        return $http->get( $request->get( 'url' ) );
+        $a    = $http->get( $request->get( 'url' ) )->getBody()->getContents();
+        echo $a;
     }
 }
