@@ -23,4 +23,15 @@ class ImgController extends Controller
         $a    = $http->get( $request->get( 'url' ) )->getBody()->getContents();
         echo $a;
     }
+
+    public function sui()
+    {
+        $data = Img::pluck( 'id' )->toArray();
+
+        $a        = array_rand( $data , 1 );
+        $return   = [];
+        $return[] = $data[$a];
+        return Img::whereIn( 'id' , $return )->first();
+        //$return;
+    }
 }

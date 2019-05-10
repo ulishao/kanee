@@ -17,3 +17,4 @@ Route::get('/', function () {
 });
 Route::get('/img', 'ImgController@index');
 Route::get( '/url' , 'ImgController@url' );
+Route::get( '/sui' , 'ImgController@sui' );

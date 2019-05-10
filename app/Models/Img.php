@@ -46,4 +46,6 @@ class Img extends Eloquent
         }
         return $data;
     }
+
+
 }
