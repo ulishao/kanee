@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -17,8 +18,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $imgs
  * @property string $img
  * @property string $source_url
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property int $size
  *
  * @package App\Models
@@ -32,12 +33,16 @@ class Img extends Eloquent
 
     protected $fillable = [ 'title' , 'id' , 'imgs' , 'img' , 'size' , 'source_url' ,'category_id' ];
 
+    public function getImgAttribute( $value )
+    {
+        return 'https://api.kanee.top/url?url=' . $value;
+    }
+
     public function getImgsAttribute( $value )
     {
         $data = [];
-        foreach ((array)array_filter( explode( ',' , $value ) ) as $value)
-        {
-            $data[] = $value.'?'.rand(1,9999);
+        foreach ((array)array_filter( explode( ',' , $value ) ) as $value) {
+            $data[] = $value . '?' . rand( 1, 9999);
         }
         return $data;
     }
