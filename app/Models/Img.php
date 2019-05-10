@@ -42,7 +42,7 @@ class Img extends Eloquent
     {
         $data = [];
         foreach ((array)array_filter( explode( ',' , $value ) ) as $value) {
-            $data[] = $value . '?' . rand( 1, 9999);
+            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand( 1 , 9999 );
         }
         return $data;
     }
