@@ -41,10 +41,11 @@ class Img extends Eloquent
     public function getImgsAttribute( $value )
     {
         $data = [];
-        foreach ((array)array_filter( explode( ',' , $value ) ) as $value) {
-            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand( 1 , 9999 );
-        }
-        return $data;
+        return (array)array_filter( explode( ',' , $value ) );
+//        foreach ( as $value) {
+//            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand( 1 , 9999 );
+//        }
+//        return $data;
     }
 
 
