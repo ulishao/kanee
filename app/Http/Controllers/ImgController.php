@@ -28,7 +28,7 @@ class ImgController extends Controller
     {
         $data = Img::pluck( 'id' )->toArray();
         $a        = array_rand( $data , 1 );
-        return Img::whereIn( 'id' , [ $a ] )->first();
+        return Img::where( 'id' , $data[$a] )->first();
         //$return;
     }
 }
