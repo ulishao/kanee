@@ -7,24 +7,21 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class PasswordReset
+ * Class Category
  *
- * @property string $email
- * @property string $token
- * @property Carbon $created_at
+ * @property string $id
+ * @property string $name
  *
  * @package App\Models
  */
-class PasswordReset extends Eloquent
+class Category extends Eloquent
 {
+    protected $table = 'category';
     public $incrementing = false;
     public $timestamps = false;
 
-    protected $hidden = [ 'token' ];
-
-    protected $fillable = [ 'email' , 'token' ];
+    protected $fillable = [ 'name' ];
 }

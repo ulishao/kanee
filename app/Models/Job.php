@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 07 May 2019 02:12:36 +0000.
+ * Date: Tue, 14 May 2019 11:48:26 +0000.
  */
 
 namespace App\Models;
@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Job
- *
+ * 
  * @property int $id
  * @property string $queue
  * @property string $payload

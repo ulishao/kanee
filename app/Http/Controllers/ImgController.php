@@ -15,6 +15,10 @@ class ImgController extends Controller
         return Resource::collection( Img::where(['category_id'=>request()->get('category_id')])->paginate( 2 ) );
     }
 
+    public function show()
+    {
+        return Img::where( 'id' , \request()->get( 'id' ) )->first();
+    }
     public function url( Request $request )
     {
         //使用图片头输出浏览器
