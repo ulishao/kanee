@@ -12,6 +12,10 @@ class UserController extends Controller
 {
     public function create()
     {
+        if($model = User::where('openid',request ()->post ('openid'))->first())
+        {
+            return $model;
+        }
         return User::create(request ()->post ());
     }
     public function code()
