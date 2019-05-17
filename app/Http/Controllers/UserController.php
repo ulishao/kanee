@@ -18,6 +18,10 @@ class UserController extends Controller
         }
         return User::create(request ()->post ());
     }
+    public function show()
+    {
+        return User::where('openid',request ()->post ('openid'))->first();
+    }
     public function code()
     {
         $config = [
