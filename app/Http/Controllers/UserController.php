@@ -12,6 +12,10 @@ class UserController extends Controller
 {
     public function create()
     {
+        return User::create(request ()->post ());
+    }
+    public function code()
+    {
         $config = [
             'app_id' => 'wxeacd33c85344fb56',
             'secret' => 'fe93bbb9245f91702302b5846efa69b3',
