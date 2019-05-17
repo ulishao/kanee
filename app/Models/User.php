@@ -30,5 +30,5 @@ class User extends Eloquent
 
     protected $hidden = [ 'password' , 'remember_token' ];
 
-    protected $fillable = [ 'name' , 'email' , 'email_verified_at' , 'password' , 'remember_token' ];
+    protected $fillable = [ 'name' , 'email' , 'avatar','email_verified_at' , 'password' , 'remember_token' ];
 }
