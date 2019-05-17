@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -26,9 +27,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class User extends Eloquent
 {
+    use SoftDeletes;
     protected $dates = [ 'email_verified_at' ];
 
     protected $hidden = [ 'password' , 'remember_token' ];
 
-    protected $fillable = [ 'name' , 'email' , 'avatar','email_verified_at' , 'password' , 'remember_token' ];
+    protected $fillable = [ 'name' , 'email' ,'sex', 'avatar','email_verified_at' , 'password' , 'remember_token' ];
 }
