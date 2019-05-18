@@ -42,6 +42,10 @@ class ImgController extends Controller
         }
         $data = Img::whereIn ('category_id', $ids)->get ()->toArray ();
         $a        = array_rand( $data , 1 );
+        if ( empty($data[ $a ]) ) {
+            $a = array_rand ($data, 1);
+            return $data[ $a ];
+        }
         return $data[ $a ];
         //$return;
     }
