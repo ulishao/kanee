@@ -12,7 +12,12 @@ class ImgController extends Controller
 {
     public function index()
     {
-        return Resource::collection( Img::where( [ 'category_id' => request()->get( 'category_id' ) ] )->where( 'imgs' , 'like' , '%2019%' )->paginate( 2 ) );
+        return Resource::collection( Img::where( [ 'category_id' => request()->get( 'category_id' ) ] )
+            ->where( 'imgs' , 'like' , '%2019%' )
+            ->when(\request ()->get ('serach'),function ($q){
+                $q->where('title','like','%'.\request ()->get ('serach').'%');
+            })
+            ->paginate( 2 ) );
     }
 
     public function show()
