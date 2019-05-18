@@ -40,9 +40,9 @@ class ImgController extends Controller
             $ids = explode (",",request ()->get ('ids'));
             $ids = array_filter  ($ids);
         }
-        $data = Img::whereIn('category_id',$ids)->pluck( 'id' )->toArray();
+        $data = Img::whereIn ('category_id', $ids)->get ()->toArray ();
         $a        = array_rand( $data , 1 );
-        return Img::where( 'id' , $data[$a] )->first();
+        return $data[ $a ];
         //$return;
     }
 }
