@@ -30,6 +30,7 @@ class ImgController extends Controller
 
     public function sui()
     {
+        var_dump (\request ()->get ('ids'));die();
         $data = Img::pluck( 'id' )->toArray();
         $a        = array_rand( $data , 1 );
         return Img::where( 'id' , $data[$a] )->first();
