@@ -30,9 +30,12 @@ class ImgController extends Controller
 
     public function sui()
     {
-        $ids = explode (",",request ()->get ('ids'));
-        $ids = array_filter  ($ids);
-        $data = Img::pluck( 'id' )->whereIn('category_id',$ids)->toArray();
+        $ids = [1];
+        if(!empty(request ()->get ('ids'))){
+            $ids = explode (",",request ()->get ('ids'));
+            $ids = array_filter  ($ids);
+        }
+        $data = Img::whereIn('category_id',$ids)->pluck( 'id' )->toArray();
         $a        = array_rand( $data , 1 );
         return Img::where( 'id' , $data[$a] )->first();
         //$return;
