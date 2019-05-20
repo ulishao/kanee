@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Libs\Qiniu\Qiniu;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 
 class ImageController extends Controller
@@ -31,6 +32,6 @@ class ImageController extends Controller
         $path = $request->post ('path', 'static');
         $img = $request->file ('img');
         $url = Qiniu::upload ($path, file_get_contents ($img->getPathname ()));
-        return json_encode (['data' => $url]);
+        return new Response(['data' => $url]);
     }
 }
