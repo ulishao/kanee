@@ -15,10 +15,7 @@ class ImageController extends Controller
     /**
      * 上传图片
      * @param Request $request
-     * @access public store
-     * @return Resource
-     * @throws ApiException
-     * @author shaowei
+     * @return array|bool
      */
     public function store ( Request $request )
     {
