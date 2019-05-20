@@ -19,7 +19,8 @@
         "reliese/laravel": "^0.0.13",
         "symfony/css-selector": "^4.2",
         "symfony/dom-crawler": "^4.2",
-        "webpatser/laravel-uuid": "^3.0"
+      "webpatser/laravel-uuid": "^3.0",
+      "zgldh/qiniu-laravel-storage": "^0.10.1"
     },
     "require-dev": {
       "barryvdh/laravel-ide-helper": "^2.6",
