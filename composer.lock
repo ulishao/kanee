@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-  "content-hash": "924b0de7d15f9994f7a17fa76ac5ac9d",
+  "content-hash": "1576d09467a9b879f4548cf724451434",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1092,16 +1092,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.16",
+          "version": "v5.8.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "83d57f9f9162ab476c43b9ec00d463ff12c578fd"
+              "reference": "33c04dd2a431adeeb49926a4f2b20590cc033ca2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/83d57f9f9162ab476c43b9ec00d463ff12c578fd",
-                "reference": "83d57f9f9162ab476c43b9ec00d463ff12c578fd",
+              "url": "https://api.github.com/repos/laravel/framework/zipball/33c04dd2a431adeeb49926a4f2b20590cc033ca2",
+              "reference": "33c04dd2a431adeeb49926a4f2b20590cc033ca2",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1241,7 +1241,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-05-07T14:37:11+00:00"
+          "time": "2019-05-14T16:02:41+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1488,16 +1488,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.17.1",
+          "version": "2.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "96acbc0c03782e8115156dd4dd8b736267155066"
+              "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/96acbc0c03782e8115156dd4dd8b736267155066",
-                "reference": "96acbc0c03782e8115156dd4dd8b736267155066",
+              "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8322b7bd1805be31867c13bf3cdaab948a0dd406",
+              "reference": "8322b7bd1805be31867c13bf3cdaab948a0dd406",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1550,7 +1550,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-04-27T18:04:27+00:00"
+          "time": "2019-05-16T18:44:35+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -1677,6 +1677,106 @@
             "time": "2019-05-05T12:50:25+00:00"
         },
         {
+          "name": "overtrue/flysystem-qiniu",
+          "version": "1.0.2",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/overtrue/flysystem-qiniu.git",
+            "reference": "64e0d51065f0ae5101098d4fcf280af2af453d36"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/overtrue/flysystem-qiniu/zipball/64e0d51065f0ae5101098d4fcf280af2af453d36",
+            "reference": "64e0d51065f0ae5101098d4fcf280af2af453d36",
+            "shasum": "",
+            "mirrors": [
+              {
+                "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                "preferred": true
+              }
+            ]
+          },
+          "require": {
+            "league/flysystem": "^1.0",
+            "php": ">=5.5.9",
+            "qiniu/php-sdk": "^7.2"
+          },
+          "require-dev": {
+            "mockery/mockery": "1.0.x-dev",
+            "php": ">=5.6.0",
+            "phpunit/phpunit": "~4.8"
+          },
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "Overtrue\\Flysystem\\Qiniu\\": "src"
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "overtrue",
+              "email": "i@overtrue.me"
+            }
+          ],
+          "description": "Flysystem adapter for the Qiniu storage.",
+          "time": "2017-11-29T06:50:29+00:00"
+        },
+      {
+        "name": "overtrue/laravel-filesystem-qiniu",
+        "version": "1.0.2",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/overtrue/laravel-filesystem-qiniu.git",
+          "reference": "73e8346de9e892f9e42f17f781e1878e981b75d6"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/overtrue/laravel-filesystem-qiniu/zipball/73e8346de9e892f9e42f17f781e1878e981b75d6",
+          "reference": "73e8346de9e892f9e42f17f781e1878e981b75d6",
+          "shasum": "",
+          "mirrors": [
+            {
+              "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+              "preferred": true
+            }
+          ]
+        },
+        "require": {
+          "league/flysystem": "^1.0",
+          "overtrue/flysystem-qiniu": "^1.0.2",
+          "php": ">=5.5.9"
+        },
+        "type": "library",
+        "extra": {
+          "laravel": {
+            "providers": [
+              "Overtrue\\LaravelFilesystem\\Qiniu\\QiniuStorageServiceProvider"
+            ]
+          }
+        },
+        "autoload": {
+          "psr-4": {
+            "Overtrue\\LaravelFilesystem\\Qiniu\\": "src"
+          }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "overtrue",
+            "email": "i@overtrue.me"
+          }
+        ],
+        "description": "A Qiniu storage filesystem for Laravel.",
+        "time": "2018-12-06T04:06:18+00:00"
+      },
+      {
             "name": "overtrue/socialite",
             "version": "2.0.8",
             "source": {
@@ -2850,16 +2950,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.0.2",
+          "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf"
+              "reference": "d3636025e8253c6144358ec0a62773cae588395b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/1aa7ab2429c3d594dd70689604b5cf7421254cdf",
-                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf",
+              "url": "https://api.github.com/repos/symfony/contracts/zipball/d3636025e8253c6144358ec0a62773cae588395b",
+              "reference": "d3636025e8253c6144358ec0a62773cae588395b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2873,19 +2973,22 @@
             },
             "require-dev": {
                 "psr/cache": "^1.0",
-                "psr/container": "^1.0"
+              "psr/container": "^1.0",
+              "symfony/polyfill-intl-idn": "^1.10"
             },
             "suggest": {
                 "psr/cache": "When using the Cache contracts",
                 "psr/container": "When using the Service contracts",
                 "symfony/cache-contracts-implementation": "",
+              "symfony/event-dispatcher-implementation": "",
+              "symfony/http-client-contracts-implementation": "",
                 "symfony/service-contracts-implementation": "",
                 "symfony/translation-contracts-implementation": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                  "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -2920,7 +3023,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-12-05T08:06:11+00:00"
+          "time": "2019-04-27T14:29:50+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -4316,71 +4419,6 @@
                 "UUID RFC4122"
             ],
             "time": "2017-10-04T07:47:40+00:00"
-        },
-      {
-        "name": "zgldh/qiniu-laravel-storage",
-        "version": "v0.10.1",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/zgldh/qiniu-laravel-storage.git",
-          "reference": "01248cf22365a0e6289082d4c337563d2d7c318c"
-        },
-        "dist": {
-          "type": "zip",
-          "url": "https://api.github.com/repos/zgldh/qiniu-laravel-storage/zipball/01248cf22365a0e6289082d4c337563d2d7c318c",
-          "reference": "01248cf22365a0e6289082d4c337563d2d7c318c",
-          "shasum": "",
-          "mirrors": [
-            {
-              "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-              "preferred": true
-            }
-          ]
-        },
-        "require": {
-          "league/flysystem": "^1.0",
-          "php": ">=5.3.3",
-          "qiniu/php-sdk": "^7.2"
-        },
-        "type": "library",
-        "extra": {
-          "laravel": {
-            "providers": [
-              "zgldh\\QiniuStorage\\QiniuFilesystemServiceProvider"
-            ]
-          }
-        },
-        "autoload": {
-          "psr-4": {
-            "zgldh\\QiniuStorage\\": "src/"
-          }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-          "MIT"
-        ],
-        "authors": [
-          {
-            "name": "zgldh",
-            "email": "zgldh@hotmail.com",
-            "role": "Original Developer"
-          },
-          {
-            "name": "abcsun",
-            "email": "chenglongsun_nj@163.com",
-            "homepage": "http://github.com/abcsun",
-            "role": "Developer"
-          }
-        ],
-        "description": "Qiniu Resource (Cloud) Storage SDK for Laravel 5",
-        "keywords": [
-          "cloud",
-          "laravel",
-          "qiniu",
-          "sdk",
-          "storage"
-        ],
-        "time": "2019-05-10T04:53:57+00:00"
         }
     ],
     "packages-dev": [
@@ -6061,16 +6099,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.9",
+          "version": "7.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "134669cf0eeac3f79bc7f0c793efbc158bffc160"
+              "reference": "64cb33f5b520da490a7b13149d39b43cf3c890c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/134669cf0eeac3f79bc7f0c793efbc158bffc160",
-                "reference": "134669cf0eeac3f79bc7f0c793efbc158bffc160",
+              "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/64cb33f5b520da490a7b13149d39b43cf3c890c6",
+              "reference": "64cb33f5b520da490a7b13149d39b43cf3c890c6",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6147,7 +6185,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-04-19T15:50:46+00:00"
+          "time": "2019-05-14T04:53:02+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

@@ -2,6 +2,7 @@
 
 namespace App\Libs\Qiniu;
 
+use App\Models\File;
 use Storage;
 
 
@@ -30,12 +31,10 @@ class Qiniu
         new self();
         $name = self::getName ($path);
         if ( self::$niu->put ($name, $contents) ) {
-            return self::$niu->getUrl ($name);
+            $url = self::$niu->getUrl ($name);
             $data = [
                 'url' => $name,
                 'host_url' => $url,
-                'postfix' => $type,
-                'size' => $size,
             ];
             return $data;
         }
