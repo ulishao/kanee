@@ -18,7 +18,7 @@ class ContentController extends Controller
 
     public function show ()
     {
-        return Content::find (request ()->get ('id'))->with ([
+        return Content::where ('id', request ()->get ('id'))->with ([
             'user',
             'comment',
             'comment.user'
