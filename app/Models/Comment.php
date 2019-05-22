@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -22,7 +23,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class Comment extends Eloquent
+class Comment extends Model
 {
     use \Illuminate\Database\Eloquent\SoftDeletes;
 

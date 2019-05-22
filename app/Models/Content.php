@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -21,9 +22,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class Content extends Eloquent
+class Content extends Model
 {
-    public $incrementing = false;
+//    public $incrementing = false;
 
     protected $fillable = [
         'user_id',
@@ -38,8 +39,9 @@ class Content extends Eloquent
 
     public function comment ()
     {
-        return $this->belongsTo (Comment::class, 'id', 'content_id');
+        return $this->hasMany (Comment::class, 'content_id', 'id');
     }
+
     public function getUrlsAttribute ( $value )
     {
         return json_decode ($value, true);
