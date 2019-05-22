@@ -7,7 +7,7 @@ use App\Models\Content;
 
 class ContentController extends Controller
 {
-    public function create ()
+    public function store ()
     {
         return Content::create (request ()->post ());
     }
