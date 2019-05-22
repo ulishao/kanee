@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Comment;
 use App\Models\Content;
 use Illuminate\Http\Response;
 
@@ -19,6 +20,11 @@ class ContentController extends Controller
     {
         $data = Content::with ('user')->orderByDesc ('created_at')->paginate (10);
         return new Response($data);
+    }
+
+    public function create ()
+    {
+        return Comment::create (request ()->post ());
     }
 
 }

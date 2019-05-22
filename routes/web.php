@@ -25,3 +25,4 @@ Route::get( '/user' , 'UserController@show' );
 Route::post ('/image', 'ImageController@store');
 Route::post ('/content', 'ContentController@store');
 Route::get ('/content', 'ContentController@index');
+Route::post ('/content/comment', 'ContentController@create');
