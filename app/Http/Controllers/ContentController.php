@@ -16,6 +16,15 @@ class ContentController extends Controller
         return Content::create ($data);
     }
 
+    public function show ()
+    {
+        return Content::find (request ()->get ('id'))->with ([
+            'user',
+            'comment',
+            'comment.user'
+        ])->first ();
+    }
+
     public function index ()
     {
         $data = Content::with ([
