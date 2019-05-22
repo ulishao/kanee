@@ -16,6 +16,10 @@ class ContentController extends Controller
         return Content::create ($data);
     }
 
+    public function kan ()
+    {
+        return \DB::table ('contents')->where (['id' => request ()->get ('id')])->increment ('kan_num', 1, ['kan_num' => \DB::raw ('`kan_num`+1')]);
+    }
     public function show ()
     {
         return Content::where ('id', request ()->get ('id'))->with ([
