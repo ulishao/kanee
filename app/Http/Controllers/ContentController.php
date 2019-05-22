@@ -17,7 +17,7 @@ class ContentController extends Controller
 
     public function index ()
     {
-        $data = Content::with ('user')->paginate (10);
+        $data = Content::with ('user')->orderByDesc ('created_at')->paginate (10);
         return new Response($data);
     }
 
