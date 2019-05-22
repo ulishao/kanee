@@ -30,4 +30,14 @@ class Content extends Eloquent
         'title',
         'urls'
     ];
+
+    public function user ()
+    {
+        return $this->belongsTo (User::class, 'openid', 'user_id');
+    }
+
+    public function getUrlsAttribute ( $value )
+    {
+        return json_decode ($value, true);
+    }
 }
