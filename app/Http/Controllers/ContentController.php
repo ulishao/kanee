@@ -9,7 +9,9 @@ class ContentController extends Controller
 {
     public function store ()
     {
-        return Content::create (request ()->post ());
+        $data = request ()->post ();
+        $data[ 'urls' ] = json_encode (request ()->post ('urls'));
+        return Content::create ($data);
     }
 
 }
