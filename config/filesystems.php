@@ -68,7 +68,7 @@ return [
             'access_key' => env ('QINIU_ACCESS_KEY', 'BsQOG27pwY2EMwyyj-8Dty7Apt9EA-LB8mqIlwdc'),
             'secret_key' => env ('QINIU_SECRET_KEY', 'Y8dV5_kNzi5Q8H0FSsM9rQjpGkuf_dXfcO3pXhHW'),
             'bucket' => env ('QINIU_BUCKET', 'kanee'),
-            'domain' => env ('QINIU_DOMAIN', 'img.kanee.top'), // or host: https://xxxx.clouddn.com
+            'domain' => env ('QINIU_DOMAIN', 'https://img.kanee.top'), // or host: https://xxxx.clouddn.com
         ],
 
     ],
