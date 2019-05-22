@@ -31,4 +31,9 @@ class Comment extends Eloquent
         'content_id',
         'content'
     ];
+
+    public function user ()
+    {
+        return $this->belongsTo (User::class, 'user_id', 'openid');
+    }
 }

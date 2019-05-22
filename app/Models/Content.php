@@ -36,6 +36,10 @@ class Content extends Eloquent
         return $this->belongsTo (User::class, 'user_id', 'openid');
     }
 
+    public function comment ()
+    {
+        return $this->belongsTo (Comment::class, 'id', 'content_id');
+    }
     public function getUrlsAttribute ( $value )
     {
         return json_decode ($value, true);
