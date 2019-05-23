@@ -16,7 +16,7 @@ class ImgController extends Controller
             ->where( 'imgs' , 'like' , '%2019%' )
             ->when(\request ()->get ('serach'),function ($q){
                 $q->where('title','like','%'.\request ()->get ('serach').'%');
-            })
+            })->orderDesc ( 'created_at' )
             ->paginate( 2 ) );
     }
 
