@@ -78,7 +78,7 @@ class ImgController extends Controller
             return '<img src="'.$img.'" width=90px height=90px>';
         });
         $grid->source_url();
-        $grid->created_at( 'Created at' );
+        $grid->created_at ( 'Created at' )->sortable ();
         $grid->updated_at( 'Updated at' );
 
         return $grid;
