@@ -13,6 +13,7 @@ class MenuController extends Controller
 {
     public function index ()
     {
-        return DB::table ( 'menus' )->select ( 'name' )->where ( [ 'status' => 1 ] )->orderByDesc ( 'ver' )->first ();
+        return DB::table ( 'menus' )->select ( 'name' , 'ver' )->where ( [ 'status' => 1 ] )->orderByDesc ( 'ver' )
+                 ->first ();
     }
 }
