@@ -32,12 +32,16 @@ class Img extends Eloquent
     protected $casts = [ 'size' => 'int' ];
 
     protected $fillable = [ 'title' , 'id' , 'imgs' , 'img' , 'size' , 'source_url' ,'category_id' ];
-
+    protected $appends = ['date'];
     public function getImgAttribute( $value )
     {
         return 'https://api.kanee.top/url?url=' . $value;
     }
 
+    public function getDateAttribute ()
+    {
+        return date ('Y-m-d H:i:s');
+    }
     public function getImgsAttribute( $value )
     {
         $data = [];
