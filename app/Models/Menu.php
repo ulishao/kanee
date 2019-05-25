@@ -24,7 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Menu extends Eloquent
 {
-    protected $casts = [ 'status' => 'int' ];
+    protected $casts = [ 'status' => 'int' , 'name' => 'array' ];
 
     protected $fillable = [ 'name' , 'status' , 'ver' ];
 }
