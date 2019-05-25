@@ -136,11 +136,18 @@ return [
     'upload'                    => [
 
         // Disk in `config/filesystem.php`.
-        'disk'      => 'admin' ,
+        'disk'      => 'qiniu' ,
 
         // Image and file upload path under the disk above.
-        'directory' => [ 'image' => 'images' , 'file' => 'files' , ] , ] ,
-
+        'directory' => [ 'image' => 'images' , 'file' => 'files' , ] , ] , //    'upload'  => [
+//
+//        'disk' => '',
+//
+//        'directory'  => [
+//            'image'  => 'image',
+//            'file'   => 'file',
+//        ],
+//    ],
     /*
     |--------------------------------------------------------------------------
     | Laravel-admin database settings

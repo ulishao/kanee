@@ -73,13 +73,13 @@ class ImgController extends Controller
         $grid->id( 'ID' )->sortable();
         $grid->title();
         $grid->imgs();
-
+        $grid->category_id ();
         $grid->img()->display(function($img) {
             return '<img src="'.$img.'" width=90px height=90px>';
         });
-        $grid->source_url();
+//        $grid->source_url();
         $grid->created_at ( 'Created at' )->sortable ();
-        $grid->updated_at( 'Updated at' );
+//        $grid->updated_at( 'Updated at' );
 
         return $grid;
     }
@@ -113,8 +113,10 @@ class ImgController extends Controller
         $form = new Form( new Img );
 
         $form->display( 'id' , 'ID' );
-        $form->display( 'img' , 'img' );
+        $form->file ( 'img' , 'img' );
         $form->display( 'imgs' , 'imgs' );
+//        $form->file('img');
+//        $form->image('image_column');
         $form->display( 'created_at' , 'Created At' );
         $form->display( 'updated_at' , 'Updated At' );
 
