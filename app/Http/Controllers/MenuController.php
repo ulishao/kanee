@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Img;
+use App\Models\Menu;
 use App\Models\User;
 use DB;
 use EasyWeChat\Factory;
@@ -13,7 +14,7 @@ class MenuController extends Controller
 {
     public function index ()
     {
-        return DB::table ( 'menus' )->select ( 'name' , 'ver' )->where ( [ 'status' => 1 ] )->orderByDesc ( 'ver' )
-                 ->first ();
+        return Menu::select ( 'name' , 'ver' )->where ( [ 'status' => 1 ] )->orderByDesc ( 'ver' )
+                   ->first ();
     }
 }
