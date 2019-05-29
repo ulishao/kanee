@@ -29,3 +29,4 @@ Route::get ('/content/show', 'ContentController@show');
 Route::get ('/content', 'ContentController@index');
 Route::post ('/content/comment', 'ContentController@create');
 Route::get ( 'menus' , 'MenuController@index' );
+Route::get ('user', 'UserController@index');

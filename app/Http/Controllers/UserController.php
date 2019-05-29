@@ -18,6 +18,11 @@ class UserController extends Controller
         }
         return User::create(request ()->post ());
     }
+
+    public function index ()
+    {
+        return User::paginate (10);
+    }
     public function show()
     {
         return User::where('openid',request ()->post ('openid'))->first();
