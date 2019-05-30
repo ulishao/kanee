@@ -29,7 +29,8 @@ class Content extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'urls'
+        'urls',
+        'category_id'
     ];
 
     public function user ()
