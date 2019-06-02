@@ -30,3 +30,4 @@ Route::get ('/content', 'ContentController@index');
 Route::post ('/content/comment', 'ContentController@create');
 Route::get ( 'menus' , 'MenuController@index' );
 Route::get ('user', 'UserController@index');
+Route::get ('img/list', 'ImgController@list');

@@ -23,6 +23,11 @@ class ImgController extends Controller
             ->paginate( 2 ) );
     }
 
+    public function list ()
+    {
+        return Resource::collection (Img::orderBydesc ('created_at')
+            ->paginate (2));
+    }
     public function show()
     {
         return Img::where( 'id' , \request()->get( 'id' ) )->first();
