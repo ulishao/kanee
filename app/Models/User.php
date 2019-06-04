@@ -36,6 +36,6 @@ class User extends Eloquent
 
     public function getIdAttribute($value)
     {
-        return substr(sha1($value), 0, 8);
+        return substr(sha1($value), 0, 16);
     }
 }
