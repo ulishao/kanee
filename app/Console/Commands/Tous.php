@@ -6,6 +6,7 @@ use App\Models\Img;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Redis;
+use InvalidArgumentException;
 use mysql_xdevapi\Exception;
 use Webpatser\Uuid\Uuid;
 use Symfony\Component\DomCrawler\Crawler;
@@ -49,28 +50,28 @@ class Tous extends Command
     {
         $data = [
             [
-                'name'=>'qinglv',
-                'num'=>'463',
+                'name' =>'qinglv',
+                'num'  => '3',
             ],
             [
-                'name'=>'nan',
-                'num'=>'463',
+                'name' =>'nan',
+                'num'  => '3',
             ],
             [
-                'name'=>'nv',
-                'num'=>'1527',
+                'name' =>'nv',
+                'num'  => '3',
             ],
             [
-                'name'=>'katong',
-                'num'=>'318',
+                'name' =>'katong',
+                'num'  => '3',
             ],
             [
-                'name'=>'fengjing',
-                'num'=>'50',
+                'name' =>'fengjing',
+                'num'  => '3',
             ],
             [
-                'name'=>'weixin',
-                'num'=>'40',
+                'name' =>'weixin',
+                'num'  => '3',
             ],
         ];
         foreach ($data as $datum){
@@ -101,7 +102,7 @@ class Tous extends Command
                     }
                 );
                 Redis::lpush( 'urls.'.$key , $nodel );
-            } catch (\InvalidArgumentException $exception) {
+            } catch (InvalidArgumentException $exception) {
                 echo 'error';
             }
         }
