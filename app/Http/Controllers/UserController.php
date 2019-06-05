@@ -13,7 +13,8 @@ class UserController extends Controller
 {
     public function create()
     {
-        $dat = self::getImage(request()->post('avatar'));
+        $avatar = str_replace('/132' , '/0' , request()->post('avatar'));
+        $dat    = self::getImage($avatar);
         // dd($dat);
         //$data = file_get_contents('https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLp7ZpiciawtKExmiaxQGvOoAlvUmclgG8ktK9pOSqMZqicLujSbKDX2Cr1Sxl0BicxsPiahAZOSiaVGXyAg/132');
         $url = Qiniu::upload('user' , $dat);
