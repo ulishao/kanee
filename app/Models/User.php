@@ -32,7 +32,18 @@ class User extends Eloquent
 
     protected $hidden = [ 'password' , 'remember_token' ];
 
-    protected $fillable = ['name', 'email', 'color', 'sex', 'openid', 'avatar', 'email_verified_at', 'password', 'remember_token'];
+    protected $fillable = [
+        'name' ,
+        'url' ,
+        'email' ,
+        'color' ,
+        'sex' ,
+        'openid' ,
+        'avatar' ,
+        'email_verified_at' ,
+        'password' ,
+        'remember_token',
+    ];
 
     public function getIdAttribute($value)
     {
