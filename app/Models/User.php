@@ -50,8 +50,8 @@ class User extends Eloquent
         return substr(sha1($value), 0, 16);
     }
 
-    public function getAvatarAttribute( $value )
-    {
-        return str_replace('/132' , '/0' , $value);
-    }
+//    public function getAvatarAttribute( $value )
+//    {
+//        return str_replace('/132' , '/0' , $value);
+//    }
 }
