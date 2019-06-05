@@ -44,7 +44,23 @@ class UserController extends Controller
 
     public function index ()
     {
-
+//        $data = User::get()->toArray();
+//
+//        foreach ($data as $key=>$datum){
+//            $avatar = str_replace('/132' , '/0' , $datum['avatar']);
+//            $dat    = self::getImage($avatar);
+//
+//            //$data = file_get_contents('https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLp7ZpiciawtKExmiaxQGvOoAlvUmclgG8ktK9pOSqMZqicLujSbKDX2Cr1Sxl0BicxsPiahAZOSiaVGXyAg/132');
+//            $url = Qiniu::upload('user' , $dat);
+//
+//            if($model = User::where('openid','=',$datum['openid'])->first()) {
+//                $model->url = $url[ 'host_url' ];
+//                $model->save();
+//
+//            }
+//
+//        }
+//        dd(1);
         return User::orderBydesc ('created_at')->paginate (10);
     }
 
