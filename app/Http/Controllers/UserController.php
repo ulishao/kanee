@@ -24,7 +24,7 @@ class UserController extends Controller
             return $model;
         }
         $data          = request()->post();
-        $data[ 'url' ] = $url;
+        $data[ 'url' ] = $url[ 'host_url' ];
         return User::create($data);
     }
 
