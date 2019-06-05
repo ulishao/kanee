@@ -41,6 +41,6 @@ class User extends Eloquent
 
     public function getAvatarAttribute( $value )
     {
-        return strtr($value , '/132' , '/0');
+        return str_replace('/132' , '/0' , $value);
     }
 }
