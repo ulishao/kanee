@@ -38,4 +38,9 @@ class User extends Eloquent
     {
         return substr(sha1($value), 0, 16);
     }
+
+    public function getAvatarAttribute( $value )
+    {
+        return strtr($value , '/132' , '/0');
+    }
 }
