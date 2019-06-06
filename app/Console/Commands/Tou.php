@@ -3,10 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Models\Img;
+use Exception;
 use GuzzleHttp\Pool;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Redis;
+use InvalidArgumentException;
 use Webpatser\Uuid\Uuid;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -139,7 +142,8 @@ class Tou extends Command
                     $crawler = new Crawler();
                     $crawler->addHtmlContent($outPageTxt);
                     $title  = $crawler->filterXPath( '//h1' )->text();
-                    $urls   = $crawler->filterXPath( '//ul[@class="artCont cl"]/li/a/img/@src | //ul[@class="artCont cl"]/li/img/@src' )->each(
+                    $urls   = $crawler->filterXPath( '//ul[@class="artCont cl"]/li/a/img/@src | //ul[@class="artCont cl"]/li/img/@src' )
+                                      ->each(
                         function ( Crawler $node , $i ) {
                             return $node->text();
                         }
@@ -151,7 +155,7 @@ class Tou extends Command
                             $urlImg .= 'https:' . $value . ',';
                             $host   = 'https:' . $value;
 
-                        } catch (\Exception $e) {
+                        } catch (Exception $e) {
                             echo 'error';
                         }
                     }
@@ -168,7 +172,7 @@ class Tou extends Command
                     ];
                     Img::create($data);
                     $this->countedAndCheckEnded();
-                } catch (\InvalidArgumentException|\Illuminate\Database\QueryException $exception) {
+                } catch (InvalidArgumentException|QueryException $exception) {
                     echo 'error';
                 }
             },

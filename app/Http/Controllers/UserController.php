@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Libs\Qiniu\Qiniu;
+use App\Models\Collect;
 use App\Models\Img;
 use App\Models\User;
 use EasyWeChat\Factory;
@@ -90,5 +91,32 @@ class UserController extends Controller
 //        User::create(
 //          ['avatar'=>]
 //        );
+    }
+
+    /**
+     *
+     * @param string $prefix
+     * @access public uuid
+     * @return string
+     * @author shaowei
+     */
+    public function uuid( $prefix = '' )
+    {
+        $chars = md5( uniqid( mt_rand() , true ) );
+        $uuid  = substr( $chars , 0 , 8 ) . '-';
+        $uuid  .= substr( $chars , 8 , 4 ) . '-';
+        $uuid  .= substr( $chars , 12 , 4 ) . '-';
+        $uuid  .= substr( $chars , 16 , 4 ) . '-';
+        $uuid  .= substr( $chars , 20 , 12 );
+        return $prefix . $uuid;
+    }
+
+
+    public function collect()
+    {
+
+        $data         = request()->post();
+        $data[ 'id' ] = $this->uuid();
+        return Collect::create( $data );
     }
 }

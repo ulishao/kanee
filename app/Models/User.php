@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -54,4 +55,21 @@ class User extends Eloquent
 //    {
 //        return str_replace('/132' , '/0' , $value);
 //    }
+
+    public static function createTable( $id , $data )
+    {
+        if ( count( $data ) <= 0 ) {
+            return;
+        }
+        $datatable = [];
+        foreach ($data as $k => $v) {
+            $datatable[] = [
+                'created_at' => date( 'Y-m-d h:i:s' ) ,
+                'label'      => $v ,
+                'img_id'     => $id ,
+                'updated_at' => date( 'Y-m-d h:i:s' ),
+            ];
+        }
+        DB::table( 'img_label' )->insert( $datatable );
+    }
 }
