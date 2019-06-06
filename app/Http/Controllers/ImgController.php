@@ -25,8 +25,8 @@ class ImgController extends Controller
 
     public function list ()
     {
-        return Resource::collection (Img::orderBydesc ('created_at')
-            ->paginate (2));
+        return Resource::collection( Img::whereIn( 'category_id' , [ 3 , 4 ] )->orderBydesc( 'created_at' )
+                                        ->paginate (2));
     }
     public function show()
     {
