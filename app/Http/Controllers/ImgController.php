@@ -49,9 +49,8 @@ class ImgController extends Controller
             $ids = array_filter  ($ids);
         }
         $data = Img::whereIn ('category_id', $ids)->where ('imgs', 'like', '%2019%')->pluck ('id')->toArray ();
-
         $a        = array_rand( $data , 1 );
-        return Img::where (['id' => $data[ $a ]])->select (['id', 'imgs', 'title'])->first ();
+        return Img::where (['id' => $data[ $a ]])->with ('imgLabel')->select (['id', 'imgs', 'title'])->first ();
         //$return;
     }
 }
