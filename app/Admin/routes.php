@@ -10,5 +10,6 @@ Route::group(
 
     $router->get( '/' , 'HomeController@index' );
     $router->resource('img', ImgController::class);
+    $router->resource( 'users' , UserController::class );
 }
 );
