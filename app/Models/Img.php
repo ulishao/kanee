@@ -52,5 +52,9 @@ class Img extends Eloquent
 //        return $data;
     }
 
+    public function imgLabel ()
+    {
+        return $this->hasMany (ImgLabel::class, 'img_id', 'id');
+    }
 
 }

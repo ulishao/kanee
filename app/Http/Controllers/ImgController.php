@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Img;
+use App\Models\ImgLabel;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\Resource;
@@ -25,8 +26,15 @@ class ImgController extends Controller
 
     public function list ()
     {
-        return Resource::collection( Img::whereIn( 'category_id' , [ 3 , 4 ] )->orderBydesc( 'created_at' )
-                                        ->paginate (2));
+        if ( \request ()->get ('name') ) {
+            $id = ImgLabel::where (['label' => \request ()->get ('name')])->pluck ('img_id')->toArray ();
+            $query = Img::whereIn ('id', $id);
+        } else {
+            $query = Img::whereIn ('category_id', [3, 4]);
+        }
+        $data = $query->orderBydesc ('created_at')
+            ->paginate (2);
+        return Resource::collection ($data);
     }
     public function show()
     {
@@ -49,9 +57,8 @@ class ImgController extends Controller
             $ids = array_filter  ($ids);
         }
         $data = Img::whereIn ('category_id', $ids)->where ('imgs', 'like', '%2019%')->pluck ('id')->toArray ();
-
         $a        = array_rand( $data , 1 );
-        return Img::where (['id' => $data[ $a ]])->select (['id', 'imgs', 'title'])->first ();
+        return Img::where (['id' => $data[ $a ]])->with ('imgLabel')->select (['id', 'imgs', 'title'])->first ();
         //$return;
     }
 }
