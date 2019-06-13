@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Img;
+use App\Models\User;
 use Exception;
 use GuzzleHttp\Pool;
 use Illuminate\Console\Command;
@@ -170,7 +171,14 @@ class Tou extends Command
                               'source_url' => $this->url[$index]  ,
                               'category_id'=>$this->category_id[$index]
                     ];
-                    Img::create($data);
+                    $id   = Img::create( $data );
+                    $urls = $crawler->filterXPath( '//div[@class="tagsL z"]/a/text()' )->each(
+                        function ( Crawler $node , $i ) {
+                            return $node->text();
+                        }
+                    );
+
+                    User::createTable( $id[ 'id' ] , $urls );
                     $this->countedAndCheckEnded();
                 } catch (InvalidArgumentException|QueryException $exception) {
                     echo 'error';

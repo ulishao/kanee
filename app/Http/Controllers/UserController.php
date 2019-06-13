@@ -18,16 +18,16 @@ class UserController extends Controller
         $dat    = self::getImage($avatar);
         // dd($dat);
         //$data = file_get_contents('https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLp7ZpiciawtKExmiaxQGvOoAlvUmclgG8ktK9pOSqMZqicLujSbKDX2Cr1Sxl0BicxsPiahAZOSiaVGXyAg/132');
-        $url = Qiniu::upload('user' , $dat);
+//        $url = Qiniu::upload('user' , $dat);
 
         if($model = User::where('openid',request ()->post ('openid'))->first()) {
             $model->avatar = request()->post('avatar');
-            $model->url    = $url[ 'host_url' ];
+//            $model->url    = $url[ 'host_url' ];
             $model->save();
             return $model;
         }
         $data          = request()->post();
-        $data[ 'url' ] = $url[ 'host_url' ];
+//        $data[ 'url' ] = $url[ 'host_url' ];
         return User::create($data);
     }
 
