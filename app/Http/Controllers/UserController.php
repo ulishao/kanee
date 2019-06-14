@@ -71,6 +71,12 @@ class UserController extends Controller
         return User::where('openid',request ()->post ('openid'))->first();
     }
 
+    public function update ()
+    {
+        $model = User::where ('openid', request ()->post ('openid'))->first ();
+        $model->content = request ()->post ('content');
+        return $model->save ();
+    }
     public function code()
     {
         $config = [

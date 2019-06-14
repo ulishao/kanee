@@ -39,6 +39,7 @@ class User extends Eloquent
         'email' ,
         'color' ,
         'sex' ,
+        'content',
         'openid' ,
         'avatar' ,
         'email_verified_at' ,
