@@ -73,6 +73,16 @@ class UserController extends Controller
 
     public function update ()
     {
+//        $str = "";
+//        for ($i=1; $i<=65; $i++){
+//            if($i>9){
+//                $num=$i;
+//            }else{
+//                $num = "0".$i;
+//            }
+//            $str.="https://i.meizitu.net/2019/05/04c".$num.".jpg,";
+//        }
+//        echo $str;die();
         $model = User::where ('openid', request ()->post ('openid'))->first ();
 
         $model->content = request ()->post ('content');

@@ -16,7 +16,7 @@ class ImgController extends Controller
         return Resource::collection (Img::when (\request ()->get ('category_id'), function ( $query ) {
             return $query->where (['category_id' => request ()->get ('category_id')]);
         })
-            ->where( 'imgs' , 'like' , '%2019%' )
+            ->where ('source_url', 'like', '%2019%')
             ->when(\request ()->get ('serach'),function ($q){
                 $q->where('title','like','%'.\request ()->get ('serach').'%');
             }
