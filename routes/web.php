@@ -21,7 +21,7 @@ Route::get( '/sui' , 'ImgController@sui' );
 Route::get( '/img_id' , 'ImgController@show' );
 Route::get( '/user/code' , 'UserController@code' );
 Route::post( '/user' , 'UserController@create' );
-Route::get( '/user' , 'UserController@show' );
+Route::get ('/user/show', 'UserController@show');
 Route::post ('/image', 'ImageController@store');
 Route::post ('/content', 'ContentController@store');
 Route::get ('/kan', 'ContentController@kan');
