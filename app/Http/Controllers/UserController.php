@@ -68,7 +68,7 @@ class UserController extends Controller
 
     public function show()
     {
-        return User::where('openid',request ()->post ('openid'))->first();
+        return User::where ('openid', request ()->get ('openid'))->first ();
     }
 
     public function update ()
