@@ -33,3 +33,4 @@ Route::get ( 'menus' , 'MenuController@index' );
 Route::get ('user', 'UserController@index');
 Route::get ('img/list', 'ImgController@list');
 Route::post( 'user/collect' , 'UserController@collect' );
+Route::post ('user/like', 'UserController@like');

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Libs\Qiniu\Qiniu;
 use App\Models\Collect;
 use App\Models\Img;
+use App\Models\Like;
 use App\Models\User;
 use EasyWeChat\Factory;
 use Illuminate\Http\Resources\Json\Resource;
@@ -31,6 +32,10 @@ class UserController extends Controller
         return User::create($data);
     }
 
+    public function like ()
+    {
+        return Like::create (request ()->post ());
+    }
 //curl 没有做错误处理
     static public function getImage( string $url )
     {
