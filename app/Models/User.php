@@ -49,7 +49,7 @@ class User extends Eloquent
 
     public function getIdAttribute($value)
     {
-        return substr( sha1( $value ) , 0 , 4 );
+        return 10000 + $value;
     }
 
     public function getUrlAttribute()
