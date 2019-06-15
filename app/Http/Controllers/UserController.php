@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function getlike ()
     {
-        return Like::where (['openid' => request ()->get ('openid')])->orderBydesc ('created_at')->paginate (10);
+        return Like::where (['openid' => request ()->get ('openid')])->orderBydesc ('created_at')->paginate (20);
     }
 //curl 没有做错误处理
     static public function getImage( string $url )
