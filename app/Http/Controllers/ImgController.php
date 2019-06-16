@@ -26,7 +26,7 @@ class ImgController extends Controller
 
     public function list ()
     {
-        $ids = [1, 2, 3, 4, 5];
+        $ids = [3, 4];
         if ( !empty(request ()->get ('category_id')) ) {
             $ids = explode (",", request ()->get ('category_id'));
             $ids = array_filter ($ids);
