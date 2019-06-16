@@ -28,7 +28,7 @@ class ImgController extends Controller
     {
         $ids = [1, 2, 3, 4, 5];
         if ( !empty(request ()->get ('category_id')) ) {
-            $ids = explode (",", request ()->get ('ids'));
+            $ids = explode (",", request ()->get ('category_id'));
             $ids = array_filter ($ids);
         }
         if ( \request ()->get ('name') ) {
