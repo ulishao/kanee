@@ -26,12 +26,19 @@ class ImgController extends Controller
 
     public function list ()
     {
+        $ids = [1, 2, 3, 4, 5];
+        if ( !empty(request ()->get ('category_id')) ) {
+            $ids = explode (",", request ()->get ('ids'));
+            $ids = array_filter ($ids);
+        }
         if ( \request ()->get ('name') ) {
             $id = ImgLabel::where (['label' => \request ()->get ('name')])->pluck ('img_id')->toArray ();
             $query = Img::whereIn ('id', $id);
         } else {
-            $query = Img::whereIn ('category_id', [3, 4]);
+            $query = Img::whereIn ('category_id', $ids);
         }
+//        if(\request ()->get ('category_id'))
+
         $data = $query->orderBydesc ('created_at')
             ->paginate (2);
         return Resource::collection ($data);
