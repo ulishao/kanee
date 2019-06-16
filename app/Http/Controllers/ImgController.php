@@ -40,7 +40,7 @@ class ImgController extends Controller
         }
 //        if(\request ()->get ('category_id'))
 
-        $data = $query->orderBydesc ('created_at')
+        $data = $query->orderBydesc ('title')
             ->paginate (2);
         return Resource::collection ($data);
     }
