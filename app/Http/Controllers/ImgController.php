@@ -30,6 +30,7 @@ class ImgController extends Controller
         if ( !empty(request ()->get ('category_id')) ) {
             $ids = explode (",", request ()->get ('category_id'));
             $ids = array_filter ($ids);
+            $ids[] = 3;
         }
         if ( \request ()->get ('name') ) {
             $id = ImgLabel::where (['label' => \request ()->get ('name')])->pluck ('img_id')->toArray ();
