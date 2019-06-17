@@ -34,7 +34,9 @@ class UserController extends Controller
 
     public function like ()
     {
-        return Like::create (request ()->post ());
+        $add         = request()->post();
+        $add[ 'ip' ] = request()->getClientIp();
+        return Like::create( $add );
     }
 
     public function getlike ()
@@ -56,23 +58,6 @@ class UserController extends Controller
 
     public function index ()
     {
-//        $data = User::get()->toArray();
-//
-//        foreach ($data as $key=>$datum){
-//            $avatar = str_replace('/132' , '/0' , $datum['avatar']);
-//            $dat    = self::getImage($avatar);
-//
-//            //$data = file_get_contents('https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLp7ZpiciawtKExmiaxQGvOoAlvUmclgG8ktK9pOSqMZqicLujSbKDX2Cr1Sxl0BicxsPiahAZOSiaVGXyAg/132');
-//            $url = Qiniu::upload('user' , $dat);
-//
-//            if($model = User::where('openid','=',$datum['openid'])->first()) {
-//                $model->url = $url[ 'host_url' ];
-//                $model->save();
-//
-//            }
-//
-//        }
-//        dd(1);
         return User::orderBydesc ('created_at')->paginate (10);
     }
 
@@ -104,21 +89,9 @@ class UserController extends Controller
         $config = [
             'app_id' => 'wxeacd33c85344fb56' ,
             'secret' => 'fe93bbb9245f91702302b5846efa69b3' ,
-
-            // 下面为可选项
-            // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
-            //            'response_type' => 'array',
-            //
-            //            'log' => [
-            //                'level' => 'debug',
-            //                'file' => __DIR__.'/wechat.log',
-            //            ],
         ];
         $app    = Factory::miniProgram($config);
         return $app->auth->session( request ()->get ('code'));
-//        User::create(
-//          ['avatar'=>]
-//        );
     }
 
     /**
