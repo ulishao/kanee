@@ -62,7 +62,7 @@ class UserController extends Controller
 
     public function index ()
     {
-        return User::orderBydesc ('content')->paginate (10);
+        return User::orderBydesc ('created_at')->paginate (10);
     }
 
     public function show()
