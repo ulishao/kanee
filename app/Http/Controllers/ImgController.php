@@ -27,7 +27,7 @@ class ImgController extends Controller
 
     public function bizhi ()
     {
-        return \DB::select ("SELECT * FROM `bizhis` ORDER BY RAND() limit 4");
+        return \DB::select ("SELECT url FROM `bizhis` ORDER BY RAND() limit 4");
         return Bizhi::orderBydesc ('created_at')
             ->paginate (4);
     }
