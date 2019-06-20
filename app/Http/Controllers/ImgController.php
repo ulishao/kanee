@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Bizhi;
 use App\Models\Img;
 use App\Models\ImgLabel;
 use GuzzleHttp\Client;
@@ -17,11 +18,18 @@ class ImgController extends Controller
             return $query->where (['category_id' => request ()->get ('category_id')]);
         })
             ->where ('source_url', 'like', '%2019%')
-            ->when(\request ()->get ('serach'),function ($q){
+            ->when(\request ()->get ('serach'),function ( $q){
                 $q->where('title','like','%'.\request ()->get ('serach').'%');
             }
             )->orderBydesc ( 'created_at' )
             ->paginate( 2 ) );
+    }
+
+    public function bizhi ()
+    {
+        return \DB::select ("SELECT url FROM `bizhis` ORDER BY RAND() limit 4");
+        return Bizhi::orderBydesc ('created_at')
+            ->paginate (4);
     }
 
     public function list ()
@@ -44,10 +52,12 @@ class ImgController extends Controller
             ->paginate (2);
         return Resource::collection ($data);
     }
+
     public function show()
     {
         return Img::where( 'id' , \request()->get( 'id' ) )->first();
     }
+
     public function url( Request $request )
     {
         //使用图片头输出浏览器
