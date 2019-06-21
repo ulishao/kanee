@@ -22,12 +22,16 @@ class UserController extends Controller
 //        $url = Qiniu::upload('user' , $dat);
 
         if($model = User::where('openid',request ()->post ('openid'))->first()) {
-            $model->avatar = request()->post('avatar');
-//            $model->url    = $url[ 'host_url' ];
-            $model->save();
+            if ( request ()->post ('avatar') ) {
+                $model->avatar = request ()->post ('avatar');
+                $model->ip     = request ()->getClientIp ();
+                $model->save ();
+            }
+
             return $model;
         }
-        $data          = request()->post();
+        $data         = request()->post();
+        $data[ 'ip' ] = request ()->getClientIp ();
 //        $data[ 'url' ] = $url[ 'host_url' ];
         return User::create($data);
     }

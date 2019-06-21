@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Bizhi;
 use App\Models\Img;
 use App\Models\ImgLabel;
+use DB;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\Resource;
@@ -28,7 +29,7 @@ class ImgController extends Controller
 
     public function bizhi ()
     {
-        return \DB::select ("SELECT url,title FROM `bizhis` ORDER BY RAND() limit 4");
+        return DB::select ("SELECT url,title FROM `bizhis` ORDER BY RAND() limit 4");
         return Bizhi::orderBydesc ('created_at')
             ->paginate (4);
     }
@@ -78,11 +79,13 @@ class ImgController extends Controller
 
     public function url( Request $request )
     {
-        //使用图片头输出浏览器
-        header( "Content-Type: image/jpeg;text/html; charset=utf-8" );
+
         $http = new Client();
         $a    = $http->get( $request->get( 'url' ) )->getBody()->getContents();
+        header ("content-type: image/jpeg; charset=UTF-8");
+        //使用图片头输出浏览器
         echo $a;
+        die();
     }
 
     public function sui()

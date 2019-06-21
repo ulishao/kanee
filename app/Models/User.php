@@ -38,13 +38,14 @@ class User extends Eloquent
         'url' ,
         'email' ,
         'color' ,
+        'ip' ,
         'sex' ,
-        'content',
+        'content' ,
         'openid' ,
         'avatar' ,
         'email_verified_at' ,
         'password' ,
-        'remember_token',
+        'remember_token' ,
     ];
 
     public function getIdAttribute($value)
@@ -54,7 +55,7 @@ class User extends Eloquent
 
     public function getUrlAttribute()
     {
-        return str_replace( '/132' , '/0' , $this->avatar );
+        return str_replace ('/132' , '/0' , $this->avatar);
     }
 
     public static function createTable( $id , $data )
