@@ -77,7 +77,13 @@ class ImgController extends Controller
             $id = ImgLabel::where (['label' => \request ()->get ('name')])->pluck ('img_id')->toArray ();
             $query = Img::whereIn ('id', $id);
         } else {
-            $query = Img::whereIn ('category_id', $ids);
+            $redis = app('redis.connection');
+            $dd = array_rand($ids, 1);
+            $a = $redis->srandmember('img_id_data:' . $ids[ $dd ], 2);
+            foreach ($a as $key => $item) {
+                $d[] = json_decode($item, true);
+            }
+            return ['data' => $d];
         }
 //        if(\request ()->get ('category_id'))
 
