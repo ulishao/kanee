@@ -33,16 +33,16 @@ return [
     |
     */
 
-    'connections' => [
+    'connections' => array (
 
-        'sqlite' => [
+        'sqlite' => array (
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-        ],
+        ),
 
-        'mysql' => [
+        'mysql' => array (
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
@@ -56,12 +56,12 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
+            'options' => extension_loaded('pdo_mysql') ? array_filter(array (
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
+            )) : array (),
+        ),
 
-        'pgsql' => [
+        'pgsql' => array (
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
@@ -73,9 +73,9 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ),
 
-        'sqlsrv'   => [
+        'sqlsrv' => array (
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '1433'),
@@ -85,10 +85,20 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-        ], 'redis' => [ 'client' => 'predis' ,
+        ),
+        'redis' => [
 
-                        'default' => [ 'host' => env( 'REDIS_HOST' , 'localhost' ) , 'password' => env( 'REDIS_PASSWORD' , null ) , 'port' => env( 'REDIS_PORT' , 6379 ) , 'database' => 0 , ] , ] ,
-    ],
+            'client' => 'predis',
+
+            'default' => [
+                'host' => env('REDIS_HOST', 'localhost'),
+                'password' => env('REDIS_PASSWORD', null),
+                'port' => env('REDIS_PORT', 6379),
+                'database' => 0,
+            ],
+
+        ],
+    ),
 
     /*
     |--------------------------------------------------------------------------

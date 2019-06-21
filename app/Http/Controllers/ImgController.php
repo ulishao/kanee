@@ -9,6 +9,7 @@ use App\Models\ImgLabel;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Support\Facades\Redis;
 
 class ImgController extends Controller
 {
@@ -32,6 +33,23 @@ class ImgController extends Controller
             ->paginate (4);
     }
 
+    public function redis ()
+    {
+        $data = Img::where('imgs', 'like', '%2019%')->get()->toArray();
+        $redis = app('redis.connection');
+////
+        foreach ($data as $r => $as) {
+            $redis->sadd('img_id:' . $as[ 'category_id' ], $as[ 'id' ]);
+        }
+//        $a = $redis->smembers('img_id:1');
+//        $b = $redis->srandmember('img_id:2');
+//        $ids = [1,2];
+//        $dd = array_rand($ids,1);
+//        $id= $redis->srandmember('img_id:'.$ids[ $dd ]);
+//        return Img::where (['id' =>$id ])->with ('imgLabel')->select (['id', 'imgs', 'title'])->first ();
+//        return array_rand($s,1);
+//        dd($a);
+    }
     public function list ()
     {
         $ids = [3, 4];
