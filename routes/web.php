@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/img', 'ImgController@index');
 Route::get( '/url' , 'ImgController@url' );
 Route::get( '/sui' , 'ImgController@sui' );
+Route::get('/sui1', 'ImgController@sui1');
 Route::get( '/img_id' , 'ImgController@show' );
 Route::get( '/user/code' , 'UserController@code' );
 Route::post( '/user' , 'UserController@create' );

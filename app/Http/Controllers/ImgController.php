@@ -51,6 +51,20 @@ class ImgController extends Controller
 //        return array_rand($s,1);
 //        dd($a);
     }
+
+    public function sui1 ()
+    {
+        $ids = [1];
+        if ( !empty(request()->get('ids')) ) {
+            $ids = explode(",", request()->get('ids'));
+            $ids = array_filter($ids);
+        }
+        $redis = app('redis.connection');
+        $dd = array_rand($ids, 1);
+        $id = $redis->srandmember('img_id:' . $ids[ $dd ]);
+        return Img::where(['id' => $id])->with('imgLabel')->select(['id', 'imgs', 'title'])->first();
+        //$return;
+    }
     public function list ()
     {
         $ids = [3, 4];
