@@ -65,7 +65,7 @@ class ImgController extends Controller
         $http = new Client();
         $a    = $http->get( $request->get( 'url' ) )->getBody()->getContents();
 
-        echo base64_encode ($a);
+        echo '<img src="data:image/png;base64,' . base64_encode ($a) . '"/>';
     }
 
     public function sui()
