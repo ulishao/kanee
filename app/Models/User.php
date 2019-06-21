@@ -54,7 +54,7 @@ class User extends Eloquent
 
     public function getUrlAttribute()
     {
-        return 'https://api.kanee.top/url?url=' . str_replace ('/132' , '/0' , $this->avatar);
+        return str_replace ('/132' , '/0' , $this->avatar);
     }
 
     public static function createTable( $id , $data )
