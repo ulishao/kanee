@@ -36,11 +36,11 @@ class ImgController extends Controller
 
     public function redis ()
     {
-        $data = Img::where('imgs', 'like', '%2019%')->get()->toArray();
+        $data = Img::where('imgs', 'like', '%2019%')->with('imgLabel')->get()->toArray();
         $redis = app('redis.connection');
 ////
         foreach ($data as $r => $as) {
-            $redis->sadd('img_id:' . $as[ 'category_id' ], $as[ 'id' ]);
+            $redis->sadd('img_id_data:' . $as[ 'category_id' ], json_encode($as));
         }
 //        $a = $redis->smembers('img_id:1');
 //        $b = $redis->srandmember('img_id:2');
@@ -61,8 +61,8 @@ class ImgController extends Controller
         }
         $redis = app('redis.connection');
         $dd = array_rand($ids, 1);
-        $id = $redis->srandmember('img_id:' . $ids[ $dd ]);
-        return Img::where(['id' => $id])->with('imgLabel')->select(['id', 'imgs', 'title'])->first();
+        return $redis->srandmember('img_id_data:' . $ids[ $dd ]);
+
         //$return;
     }
     public function list ()
