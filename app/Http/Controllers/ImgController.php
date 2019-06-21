@@ -61,11 +61,13 @@ class ImgController extends Controller
 
     public function url( Request $request )
     {
-        //使用图片头输出浏览器
+
         $http = new Client();
         $a    = $http->get( $request->get( 'url' ) )->getBody()->getContents();
-
-        echo '<img src="data:image/png;base64,' . base64_encode ($a) . '"/>';
+        header ("content-type: image/jpeg; charset=UTF-8");
+        //使用图片头输出浏览器
+        echo $a;
+        die();
     }
 
     public function sui()
