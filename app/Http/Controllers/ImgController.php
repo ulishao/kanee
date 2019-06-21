@@ -86,7 +86,7 @@ class ImgController extends Controller
 
             $a = $redis->smembers('user:' . \request()->get('openid'));
             if ( count($a) <= 2 ) {
-                $redis->expire('user:' . \request()->get('openid'), 300);
+                $redis->expire('user:' . \request()->get('openid'), 60);
             }
             foreach ($a as $key => $item) {
                 $d[] = json_decode($item, true);
