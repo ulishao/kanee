@@ -38,13 +38,14 @@ class User extends Eloquent
         'url' ,
         'email' ,
         'color' ,
+        'ip' ,
         'sex' ,
-        'content',
+        'content' ,
         'openid' ,
         'avatar' ,
         'email_verified_at' ,
         'password' ,
-        'remember_token',
+        'remember_token' ,
     ];
 
     public function getIdAttribute($value)

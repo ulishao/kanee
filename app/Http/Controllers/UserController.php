@@ -24,12 +24,14 @@ class UserController extends Controller
         if($model = User::where('openid',request ()->post ('openid'))->first()) {
             if ( request ()->post ('avatar') ) {
                 $model->avatar = request ()->post ('avatar');
+                $model->ip     = request ()->getClientIp ();
                 $model->save ();
             }
 
             return $model;
         }
-        $data          = request()->post();
+        $data         = request()->post();
+        $data[ 'ip' ] = request ()->getClientIp ();
 //        $data[ 'url' ] = $url[ 'host_url' ];
         return User::create($data);
     }
