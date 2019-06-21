@@ -52,7 +52,7 @@ class ImgController extends Controller
 //        dd($a);
     }
 
-    public function sui1 ()
+    public function sui ()
     {
         $ids = [1];
         if ( !empty(request()->get('ids')) ) {
@@ -102,7 +102,7 @@ class ImgController extends Controller
         die();
     }
 
-    public function sui()
+    public function sui1 ()
     {
         $ids = [1];
         if(!empty(request ()->get ('ids'))){
