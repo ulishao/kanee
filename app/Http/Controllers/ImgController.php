@@ -29,9 +29,10 @@ class ImgController extends Controller
 
     public function biget()
     {
-        $data  = Bizhi::get ()->toArray ();
+        $data  = Bizhi::all ();
         $redis = app ('redis.connection');
         foreach ($data as $r => $as) {
+            dd ($as);
             $redis->sadd ('bizhi_data' , $as);
         }
         dd ('success');
