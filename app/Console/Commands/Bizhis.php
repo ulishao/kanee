@@ -50,29 +50,29 @@ class Bizhis extends Command
     {
         $data = [
             [
-                'name' => 'dongman',
-                'num' => '300',
-            ],
-            [
-                'name' => 'mingxing',
-                'num' => '300',
-            ],
-            [
-                'name' => 'fengjing',
-                'num' => '300',
-            ],
-            [
-                'name' => 'yingshi',
-                'num' => '300',
-            ],
-            [
-                'name' => 'qiche',
-                'num' => '300',
-            ],
-            [
-                'name' => 'weimei',
-                'num' => '300',
-            ],
+                'name' => 'dongman' ,
+                'num'  => '680' ,
+            ] ,
+            //            [
+            //                'name' => 'mingxing',
+            //                'num' => '300',
+            //            ],
+            //            [
+            //                'name' => 'fengjing',
+            //                'num' => '300',
+            //            ],
+            //            [
+            //                'name' => 'yingshi',
+            //                'num' => '300',
+            //            ],
+            //            [
+            //                'name' => 'qiche',
+            //                'num' => '300',
+            //            ],
+            //            [
+            //                'name' => 'weimei',
+            //                'num' => '300',
+            //            ],
         ];
         foreach ($data as $datum) {
             $this->D_run ($datum[ 'num' ], $datum[ 'name' ]);
