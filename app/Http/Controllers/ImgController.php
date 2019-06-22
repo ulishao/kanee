@@ -27,6 +27,15 @@ class ImgController extends Controller
             ->paginate( 2 ) );
     }
 
+    public function biget()
+    {
+        $data  = Bizhi::get ()->toArray ();
+        $redis = app ('redis.connection');
+        foreach ($data as $r => $as) {
+            $redis->sadd ('bizhi_data' , $as);
+        }
+        dd ('success');
+    }
     public function bizhi ()
     {
         return DB::select ("SELECT url,title FROM `bizhis` ORDER BY RAND() limit 4");
