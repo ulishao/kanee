@@ -80,14 +80,14 @@ class ImgController extends Controller
             $redis = app('redis.connection');
             $dd = array_rand($ids, 1);
             $a = $redis->srandmember('img_id_data:' . $ids[ $dd ], 2);
-            foreach ($a as $key => $item) {
-                $redis->sadd('user:' . \request()->get('openid'), $item);
-            }
-
-            $a = $redis->smembers('user:' . \request()->get('openid'));
-            if ( count($a) <= 2 ) {
-                $redis->expire('user:' . \request()->get('openid'), 60);
-            }
+//            foreach ($a as $key => $item) {
+//                $redis->sadd('user:' . \request()->get('openid'), $item);
+//            }
+//
+//            $a = $redis->smembers('user:' . \request()->get('openid'));
+//            if ( count($a) <= 2 ) {
+//                $redis->expire('user:' . \request()->get('openid'), 60);
+//            }
             foreach ($a as $key => $item) {
                 $d[] = json_decode($item, true);
             }
