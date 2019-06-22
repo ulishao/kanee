@@ -66,7 +66,13 @@ class UserController extends Controller
 
     public function index ()
     {
-        return User::orderBydesc ('created_at')->paginate (10);
+        if ( request()->get('page') == 1 ) {
+            $data = User::orderBydesc('created_at')->paginate(10);
+            $data[ 'data' ][] = User::where(['id' => 1])->first();
+            return $data;
+        } else {
+            return User::orderBydesc('created_at')->paginate(10);
+        }
     }
 
     public function show()
