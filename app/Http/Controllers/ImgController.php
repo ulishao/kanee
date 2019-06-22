@@ -39,8 +39,11 @@ class ImgController extends Controller
     public function bizhi ()
     {
         $redis = app ('redis.connection');
-
-        return $redis->srandmember ('bizhi_data' , 6);
+        $a     = $redis->srandmember ('bizhi_data' , 6);
+        foreach ($a as $key => $item) {
+            $d[] = json_decode ($item , true);
+        }
+        return $d;
     }
 
     public function redis ()
