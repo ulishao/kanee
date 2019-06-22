@@ -68,7 +68,9 @@ class UserController extends Controller
     {
         if ( request()->get('page') == 1 || empty(request()->get('page')) ) {
             $data = User::orderBydesc('created_at')->paginate(10)->toArray();
-            array_unshift($data[ 'data' ], User::where(['id' => 1])->first());
+            $user = User::where(['id' => 1])->first();
+            $user[ 'id' ] = 'No.1';
+            array_unshift($data[ 'data' ], $user);
             return $data;
         } else {
             return User::orderBydesc('created_at')->paginate(10);
