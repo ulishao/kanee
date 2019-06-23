@@ -69,7 +69,12 @@ class UserController extends Controller
         if ( request()->get('page') == 1 || empty(request()->get('page')) ) {
             $data = User::orderBydesc('created_at')->paginate(10)->toArray();
             $user = User::where(['id' => 1])->first()->toArray();
-            $user[ 'id' ] = 'No.1';
+            $user[ 'id' ] = '系统提示';
+            $aaa = [
+                '友情提示!重新授权可更换主题颜色。',
+                '听说每个页面广告都点一次这一星期页面都没有广告了呢！！！'
+            ];
+            $user[ 'content' ] = $aaa[ array_rand([0, 1], 1) ];
             array_unshift($data[ 'data' ], $user);
             return $data;
         } else {
