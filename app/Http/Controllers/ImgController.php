@@ -48,7 +48,7 @@ class ImgController extends Controller
 
     public function redis ()
     {
-        $data  = Img::where ('imgs' , 'like' , '%2019%')->orWhere ('imgs' , 'like' , '%2018%')->with ('imgLabel')->get ()->toArray ();
+        $data = Img::where('imgs', 'like', '%2019%')->with('imgLabel')->get()->toArray();
         $redis = app('redis.connection');
 ////
         foreach ($data as $r => $as) {
