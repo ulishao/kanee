@@ -71,7 +71,7 @@ class UserController extends Controller
             $user = User::where(['id' => 1])->first()->toArray();
             $user[ 'id' ] = '系统提示';
             $aaa = [
-                '友情提示!重新授权可更换主题颜色。',
+                '友情提示!重新授权可更换主题颜色。😹',
                 '听说每个页面广告都点一次这一星期页面都没有广告了呢！！！'
             ];
             $user[ 'content' ] = $aaa[ array_rand([0, 1], 1) ];
