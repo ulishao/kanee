@@ -12,7 +12,7 @@ class Qiniu
 
     public function __construct ()
     {
-        self::$niu = Storage::disk ('qiniu');
+        self::$niu = Storage::disk('public');
     }
 
     /**
@@ -31,10 +31,10 @@ class Qiniu
         new self();
         $name = self::getName ($path);
         if ( self::$niu->put ($name, $contents) ) {
-            $url = self::$niu->getUrl ($name);
+//            $url = self::$niu->getUrl ($name);
             $data = [
                 'url' => $name,
-                'host_url' => $url,
+                'host_url' => 'https://api.kanee.top/storage' . $name,
             ];
             return $data;
         }

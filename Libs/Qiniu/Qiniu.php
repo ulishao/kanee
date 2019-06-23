@@ -11,7 +11,7 @@ class Qiniu
 
     public function __construct ()
     {
-        self::$niu = Storage::disk ('qiniu');
+        self::$niu = Storage::disk('public');
     }
 
     /**
@@ -29,6 +29,10 @@ class Qiniu
     {
         new self();
         $name = self::getName ($path);
+        dd($name);
+//        $url = Qiniu::upload ($path, $contents);
+//        $url = \Storage::disk('public')->put($name,$contents);
+//        return $url;
         if ( self::$niu->put ($name, $contents) ) {
             return self::$niu->getUrl ($name);
             $data = [
@@ -52,7 +56,7 @@ class Qiniu
      */
     public static function getName ( $path )
     {
-        return config ('upload.path') . '/' . $path . '/' . self::uuid () . '.jpg';
+        return self::uuid() . '.jpg';
     }
 
     /**
