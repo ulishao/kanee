@@ -64,7 +64,7 @@ class ImgController extends Controller
 //        dd($a);
     }
 
-    public function sui ()
+    public function sui2 ()
     {
         $datate = [
             "承蒙你出现，够我喜欢好多年。" ,
@@ -193,7 +193,7 @@ class ImgController extends Controller
         die();
     }
 
-    public function sui1 ()
+    public function sui ()
     {
 
         $ids = [1];
