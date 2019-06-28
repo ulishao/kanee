@@ -33,6 +33,6 @@ class ImageController extends Controller
         $img = $request->file ('img');
 
         $url = Qiniu::upload ($path, file_get_contents ($img->getPathname ()));
-//        return response ()->json (['data' => $url]);
+        return response()->json(['data' => $url]);
     }
 }

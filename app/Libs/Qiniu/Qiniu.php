@@ -37,7 +37,7 @@ class Qiniu
 //            $url = self::$niu->getUrl ($name);
             $data = [
                 'url' => $name,
-                'host_url' => 'https://api.kanee.top/storage' . $name,
+                'host_url' => 'https://kanee-img.cn-bj.ufileos.com' . $name,
             ];
             return $data;
         }
