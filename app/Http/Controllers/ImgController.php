@@ -40,7 +40,29 @@ class ImgController extends Controller
     }
     public function bizhi ()
     {
-
+        return [
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/26/65554b2bd91d4e3390032feca436de7e!1080x1920.jpeg' ,
+            ] ,
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/26/fc9cd9f2c6674562a6e70014be8fed0a!1080x1920.jpeg' ,
+            ] ,
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/26/3c1fbb706cee4e6fbc260b41e60aaac7!1080x1920.jpeg' ,
+            ] ,
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/26/b13fb73389a840a78a971c5996aa0ed2!1080x1920.jpeg' ,
+            ] ,
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/25/8bcfa369d2b642f59b69a38b9dbdae78!1080x1920.jpeg' ,
+            ] ,
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/25/eda9af0fadf54066a5f1a8899be96480!1080x1920.jpeg' ,
+            ] ,
+            [
+                'url'=>'https://img2.woyaogexing.com/2019/06/22/9ec0b52d16e843b190250b3f50efdc00!1080x1920.jpeg' ,
+            ] ,
+        ];
         $redis= app ('redis.connection');
         $a    =$redis->srandmember ('bizhi_data' , 5);
         foreach ($a as $key => $item) {
