@@ -29,8 +29,10 @@ class ImgController extends Controller
 
     public function biget()
     {
+
         $data  = Bizhi::all ();
         $redis = app ('redis.connection');
+        $redis->del ('bizhi_data');
         foreach ($data as $r => $as) {
             $redis->sadd ('bizhi_data' , $as);
         }
@@ -38,6 +40,7 @@ class ImgController extends Controller
     }
     public function bizhi ()
     {
+
         $redis= app ('redis.connection');
         $a    =$redis->srandmember ('bizhi_data' , 5);
         foreach ($a as $key => $item) {
