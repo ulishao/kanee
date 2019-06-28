@@ -203,7 +203,7 @@ class ImgController extends Controller
         }
         $data = Img::whereIn ('category_id', $ids)->where ('imgs', 'like', '%2019%')->pluck ('id')->toArray ();
         $a        = array_rand( $data , 1 );
-        return Img::where (['id' => $data[ $a ]])->with ('imgLabel')->select (['id', 'imgs', 'title'])->first ();
+        return Img::where(['id' => $data[ $a ]])->with('imgLabel')->select(['id', 'imgs', 'title'])->first();
         //$return;
     }
 
