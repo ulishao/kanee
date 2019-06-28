@@ -50,8 +50,8 @@ class Bizhis extends Command
     {
         $data = [
             [
-                'name' => 'dongman' ,
-                'num'  => '680' ,
+                'name'=> 'dongman' ,
+                'num' =>'600' ,
             ] ,
             //            [
             //                'name' => 'mingxing',
