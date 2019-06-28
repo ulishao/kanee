@@ -35,7 +35,7 @@ class ContentController extends Controller
             'user',
             'comment',
             'comment.user'
-        ])->orderByDesc ('created_at')->paginate (10);
+        ])->where(['openid' => request()->get('openid')])->orderByDesc('created_at')->paginate(10);
         return new Response($data);
     }
 
