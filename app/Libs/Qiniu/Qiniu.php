@@ -2,6 +2,7 @@
 
 namespace App\Libs\Qiniu;
 
+use App\Libs\ucloud\ucloud;
 use App\Models\File;
 use Storage;
 
@@ -30,6 +31,8 @@ class Qiniu
     {
         new self();
         $name = self::getName ($path);
+        $ucloudModel = new ucloud();
+        $ucloudModel->put($name, $contents);
         if ( self::$niu->put ($name, $contents) ) {
 //            $url = self::$niu->getUrl ($name);
             $data = [

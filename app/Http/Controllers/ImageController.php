@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Libs\Qiniu\Qiniu;
+use App\Libs\ucloud\ucloud;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -32,6 +33,6 @@ class ImageController extends Controller
         $img = $request->file ('img');
 
         $url = Qiniu::upload ($path, file_get_contents ($img->getPathname ()));
-        return response ()->json (['data' => $url]);
+//        return response ()->json (['data' => $url]);
     }
 }
