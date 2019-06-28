@@ -54,7 +54,7 @@ class Qiniu
      */
     public static function getName ( $path )
     {
-        return config ('upload.path') . '/' . $path . '/' . self::uuid () . '.jpg';
+        return $path . '/' . self::uuid() . '.jpg';
     }
 
     /**
