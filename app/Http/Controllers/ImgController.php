@@ -75,6 +75,9 @@ class ImgController extends Controller
     {
         $data = Img::where('imgs', 'like', '%2019%')->with('imgLabel')->get()->toArray();
         $redis = app('redis.connection');
+        foreach ($data as $r => $as) {
+            $redis->del('img_id_data:' . $as[ 'category_id' ]);
+        }
 ////
         foreach ($data as $r => $as) {
             $redis->sadd('img_id_data:' . $as[ 'category_id' ], json_encode($as));
