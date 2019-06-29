@@ -35,6 +35,15 @@ class Bizhi extends Eloquent
         'source_url'
     ];
 
+    public $appends = [
+        'url_s'
+    ];
+
+    public function getUrlSAttribute ()
+    {
+        return str_replace('1080x1920.jpeg', '360x640.jpeg', $this->url);
+    }
+
     public static function createTable ( $id, $data )
     {
         if ( count ($data) <= 0 ) {
