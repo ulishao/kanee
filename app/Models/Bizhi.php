@@ -36,10 +36,10 @@ class Bizhi extends Eloquent
     ];
 
     public $appends = [
-        'url_s'
+        'urlf'
     ];
 
-    public function getUrlSAttribute ()
+    public function getUrlfAttribute ()
     {
         return str_replace('1080x1920.jpeg', '360x640.jpeg', $this->url);
     }
