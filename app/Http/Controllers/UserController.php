@@ -107,6 +107,17 @@ class UserController extends Controller
         $model->save ();
         return $model;
     }
+
+    public function ditu ()
+    {
+        $model = User::where('openid', request()->post('openid'))->first();
+
+        $model->lat = request()->post('lat');
+        $model->lng = request()->post('lng');
+        $model->save();
+        return $model;
+    }
+
     public function code()
     {
         $config = [

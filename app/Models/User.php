@@ -37,6 +37,8 @@ class User extends Eloquent
         'name' ,
         'url' ,
         'email' ,
+        'lat',
+        'lng',
         'color' ,
         'ip' ,
         'sex' ,
