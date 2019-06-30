@@ -146,7 +146,10 @@ class UserController extends Controller
         return $prefix . $uuid;
     }
 
-
+    public function getIndex ()
+    {
+        return User::select(['latitude', 'longitude'])->all();
+    }
     public function collect()
     {
 
