@@ -23,6 +23,7 @@ Route::get( '/img_id' , 'ImgController@show' );
 Route::get( '/user/code' , 'UserController@code' );
 Route::post( '/user' , 'UserController@create' );
 Route::get ('/user/show', 'UserController@show');
+Route::get('/user/show1', 'UserController@show1');
 Route::post ('/user/update', 'UserController@update');
 Route::post('/user/ditu', 'UserController@ditu');
 Route::get('/user/get_index', 'UserController@getIndex');

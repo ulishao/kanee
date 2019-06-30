@@ -84,6 +84,12 @@ class UserController extends Controller
         }
     }
 
+    public function show1 ()
+    {
+        $id = request()->get('id') - 10000;
+        return User::where('id', $id)->first();
+    }
+
     public function show()
     {
         return User::where ('openid', request ()->get ('openid'))->first ();
@@ -149,7 +155,7 @@ class UserController extends Controller
     public function getIndex ()
     {
 
-        return User::select(['openid as id', 'latitude', 'longitude', 'sex'])->whereNotNull('latitude')->get();
+        return User::select(['id', 'latitude', 'longitude', 'sex'])->whereNotNull('latitude')->get();
     }
     public function collect()
     {
