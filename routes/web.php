@@ -25,7 +25,7 @@ Route::post( '/user' , 'UserController@create' );
 Route::get ('/user/show', 'UserController@show');
 Route::post ('/user/update', 'UserController@update');
 Route::post('/user/ditu', 'UserController@ditu');
-Route::get('/user/get_ditu', 'UserController@get_ditu');
+Route::get('/user/get_index', 'UserController@getIndex');
 Route::post ('/image', 'ImageController@store');
 Route::post ('/content', 'ContentController@store');
 Route::get ('/bizhi', 'ImgController@bizhi');

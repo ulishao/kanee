@@ -146,9 +146,9 @@ class UserController extends Controller
         return $prefix . $uuid;
     }
 
-    public function get_ditu ()
+    public function getIndex ()
     {
-        return User::select(['latitude', 'longitude'])->all();
+        return User::select(['latitude', 'longitude'])->get();
     }
     public function collect()
     {
