@@ -148,7 +148,7 @@ class UserController extends Controller
 
     public function getIndex ()
     {
-        return User::select(['latitude', 'longitude'])->get();
+        return User::select(['latitude', 'longitude'])->whereNotNull('latitude')->get();
     }
     public function collect()
     {
