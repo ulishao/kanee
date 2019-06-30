@@ -112,8 +112,8 @@ class UserController extends Controller
     {
         $model = User::where('openid', request()->post('openid'))->first();
 
-        $model->lat = request()->post('lat');
-        $model->lng = request()->post('lng');
+        $model->latitude = request()->post('lat');
+        $model->longitude = request()->post('lng');
         $model->save();
         return $model;
     }
