@@ -49,7 +49,12 @@ class User extends Eloquent
         'password' ,
         'remember_token' ,
     ];
+    protected $appends = ['iconPath'];
 
+    public function getIconPathAttribute ()
+    {
+        return $this->sex % 1 == 0 ? '/icon/dog-yellow.png' : "/icon/dog-yellow.png";
+    }
     public function getIdAttribute($value)
     {
         return 10000 + $value;
