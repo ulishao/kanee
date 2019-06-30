@@ -64,7 +64,7 @@ class ImgController extends Controller
 //            ] ,
 //        ];
         $redis= app ('redis.connection');
-        $a    =$redis->srandmember ('bizhi_data' , 5);
+        $a = $redis->srandmember('bizhi_data', 10);
         foreach ($a as $key => $item) {
             $d[] = json_decode ($item , true);
         }
