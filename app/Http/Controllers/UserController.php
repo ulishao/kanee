@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function title ()
     {
-        return ['title' => 'xxxx'];
+        return ['title' => '点击设置可以设置你的坐标'];
     }
     public function create()
     {
