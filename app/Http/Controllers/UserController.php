@@ -13,6 +13,10 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class UserController extends Controller
 {
+    public function title ()
+    {
+        return ['title' => 'xxxx'];
+    }
     public function create()
     {
 //        $avatar = str_replace('/132' , '/0' , request()->post('avatar'));
@@ -123,6 +127,7 @@ class UserController extends Controller
         $model->save();
         return $model;
     }
+
 
     public function code()
     {
