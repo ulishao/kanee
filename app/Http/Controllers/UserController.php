@@ -48,7 +48,7 @@ class UserController extends Controller
         if ( request ()->get ('openid') ) {
             return Like::where (['openid' => request ()->get ('openid')])->orderBydesc ('created_at')->paginate (20);
         } else {
-            return Like::orderBydesc ('created_at')->paginate (20);
+            return Like::orderBydesc('created_at')->paginate(40);
         }
     }
 //curl 没有做错误处理
