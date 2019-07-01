@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return 'hello git 豫ICP备19015780号-1';
+    return "";
 
 });
 Route::get('/img', 'ImgController@index');
