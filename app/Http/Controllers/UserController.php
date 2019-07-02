@@ -38,7 +38,13 @@ class UserController extends Controller
 
     public function like ()
     {
-        $add         = request()->post();
+        $add=request ()->post ();
+        if ( $model=Like::where ([
+            'openid'=>request ()->post ('openid') ,
+            'url'   =>request ()->post ('url'),
+        ])->first () ) {
+            return $model;
+        }
         $add[ 'ip' ] = request()->getClientIp();
         return Like::create( $add );
     }
