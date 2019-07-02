@@ -13,6 +13,10 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class UserController extends Controller
 {
+    public function title ()
+    {
+        return ['title' => '点击设置可以设置你的坐标'];
+    }
     public function create()
     {
 //        $avatar = str_replace('/132' , '/0' , request()->post('avatar'));
@@ -54,7 +58,7 @@ class UserController extends Controller
         if ( request ()->get ('openid') ) {
             return Like::where (['openid' => request ()->get ('openid')])->orderBydesc ('created_at')->paginate (20);
         } else {
-            return Like::orderBydesc ('created_at')->paginate (20);
+            return Like::orderBydesc('created_at')->paginate(40);
         }
     }
 //curl 没有做错误处理
@@ -130,6 +134,7 @@ class UserController extends Controller
         return $model;
     }
 
+
     public function code()
     {
         $config = [
@@ -161,7 +166,7 @@ class UserController extends Controller
     public function getIndex ()
     {
 
-        return User::select(['id', 'latitude', 'longitude', 'sex'])->whereNotNull('latitude')->get();
+        return User::select(['id', 'openid', 'latitude', 'longitude', 'sex'])->whereNotNull('latitude')->get();
     }
     public function collect()
     {

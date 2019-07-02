@@ -53,7 +53,12 @@ class User extends Eloquent
 
     public function getIconPathAttribute ()
     {
-        return $this->sex % 2 == 0 ? '/icon/dog-select.png' : "/icon/dog-yellow.png";
+        if ( $this->openid == request()->get('openid') ) {
+            return '/icon/dog-index.png';
+        } else {
+
+            return $this->sex % 2 == 0 ? '/icon/dog-select.png' : "/icon/dog-yellow.png";
+        }
     }
     public function getIdAttribute($value)
     {
