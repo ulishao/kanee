@@ -13,6 +13,32 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class UserController extends Controller
 {
+    public function dd()
+    {
+
+        $data=User::whereNull ('longitude')->whereNotNull ('ip')->get ()->toArray ();
+        foreach ($data as $key=>$datum) {
+//            try{
+            $url='http://api.map.baidu.com/location/ip?v=2.0&ak=hmHVRwKE6r8IpmAKWGhgxiF6QVvQhs7s&ip=' . $datum[ 'ip' ] . '&coor=gcj02';
+            $dd =json_decode (file_get_contents ($url) , true);
+            $id =$datum[ 'id' ] - 10000;
+            if ( empty($dd[ 'content' ][ 'point' ]) ) {
+                dd ($dd);
+            }
+            User::where ([ 'id'=>$id ])->update ([
+                'longitude'=>$dd[ 'content' ][ 'point' ][ 'x' ] ,
+                'latitude' =>$dd[ 'content' ][ 'point' ][ 'y' ],
+            ]);
+            sleep (2);
+//            }catch (\ErrorException $exception){
+//                echo $datum['id'].'err';
+//            }
+
+//            dd();
+        }
+
+
+    }
     public function title ()
     {
         return [ 'title'=>'提示📢!!大家可以点设置重新选择自己的位置' ];
@@ -129,7 +155,8 @@ class UserController extends Controller
         $model = User::where('openid', request()->post('openid'))->first();
 
         $model->latitude = request()->post('lat');
-        $model->longitude = request()->post('lng');
+        $model->longitude= request()->post('lng');
+        $model->type     =2;
         $model->save();
         return $model;
     }
