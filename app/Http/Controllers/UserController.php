@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function title ()
     {
-        return [ 'title'=>'大家可以点设置重新选择自己的位置' ];
+        return [ 'title'=>'提示📢!!大家可以点设置重新选择自己的位置' ];
     }
     public function create()
     {
