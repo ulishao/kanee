@@ -15,6 +15,7 @@ Route::get('/', function () {
     return "";
 
 });
+Route::get ('/dd' , 'UserController@dd');
 Route::get('/img', 'ImgController@index');
 Route::get( '/url' , 'ImgController@url' );
 Route::get( '/sui' , 'ImgController@sui' );
