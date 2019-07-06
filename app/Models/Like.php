@@ -31,6 +31,6 @@ class Like extends Eloquent
 
     public function user ()
     {
-        return $this->hasMany(User::class, 'openid', 'openid');
+        return $this->hasOne(User::class, 'openid', 'openid');
     }
 }
