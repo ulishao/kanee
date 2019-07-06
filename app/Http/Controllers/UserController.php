@@ -13,6 +13,7 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class UserController extends Controller
 {
+
     public function dd()
     {
 

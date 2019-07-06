@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Bizhi;
 use App\Models\Img;
 use App\Models\ImgLabel;
+use App\Models\Like;
 use DB;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Redis;
 
 class ImgController extends Controller
 {
+    public function user ()
+    {
+        return Like::where(['url' => \request()->get('url')])->width(['user'])->get();
+    }
     public function index()
     {
         return Resource::collection (Img::when (\request ()->get ('category_id'), function ( $query ) {

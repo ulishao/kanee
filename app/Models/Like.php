@@ -28,4 +28,9 @@ class Like extends Eloquent
         'openid' ,
         'ip',
     ];
+
+    public function user ()
+    {
+        return $this->hasMany(User::class, 'openid', 'openid');
+    }
 }
