@@ -17,7 +17,7 @@ class ImgController extends Controller
 {
     public function user ()
     {
-        return Like::where(['url' => \request()->get('url')])->width(['user'])->get();
+        return Like::where(['url' => \request()->get('url')])->with(['user'])->get();
     }
     public function index()
     {
