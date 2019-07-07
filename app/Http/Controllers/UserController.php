@@ -7,12 +7,18 @@ use App\Libs\Qiniu\Qiniu;
 use App\Models\Collect;
 use App\Models\Img;
 use App\Models\Like;
+use App\Models\Message;
 use App\Models\User;
 use EasyWeChat\Factory;
 use Illuminate\Http\Resources\Json\Resource;
 
 class UserController extends Controller
 {
+
+    public function form ()
+    {
+        return Message::create(request()->post());
+    }
 
     public function dd()
     {

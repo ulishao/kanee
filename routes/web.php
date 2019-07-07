@@ -29,6 +29,7 @@ Route::get('/user/show1', 'UserController@show1');
 Route::post ('/user/update', 'UserController@update');
 Route::post('/user/ditu', 'UserController@ditu');
 Route::get('/user/get_index', 'UserController@getIndex');
+Route::post('/user/form', 'UserController@form');
 Route::post ('/image', 'ImageController@store');
 Route::post ('/content', 'ContentController@store');
 Route::get ('/bizhi', 'ImgController@bizhi');
