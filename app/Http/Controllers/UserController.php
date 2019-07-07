@@ -9,6 +9,7 @@ use App\Models\Img;
 use App\Models\Like;
 use App\Models\Message;
 use App\Models\User;
+use Carbon\Carbon;
 use EasyWeChat\Factory;
 use Illuminate\Http\Resources\Json\Resource;
 
@@ -20,6 +21,26 @@ class UserController extends Controller
         return Message::create(request()->post());
     }
 
+    public function send ()
+    {
+        $config = [
+            'app_id' => 'wxeacd33c85344fb56',
+            'secret' => 'fe93bbb9245f91702302b5846efa69b3',
+        ];
+        $app = Factory::miniProgram($config);
+        return $app->template_message->send([
+            'touser' => 'og0kA5e1gY8bs_UIvqIPmqh2F8bQ',
+            'template_id' => 'OJYekjV9bzjgBI2EGpm7g-r9JT7Xl1ZRgmGp82kO_tQ',
+            'page' => 'pages/home/home',
+            'form_id' => '8495726efc9f4810934a7e08ab8b8802',
+            'data' => [
+                'keyword1' => '美好的头像',
+                'keyword2' => '2',
+                'keyword3' => Carbon::parse(),
+                'keyword4' => '随即头像很好',
+            ],
+        ]);
+    }
     public function dd()
     {
 

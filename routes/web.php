@@ -41,6 +41,7 @@ Route::get ('/content', 'ContentController@index');
 Route::post ('/content/comment', 'ContentController@create');
 Route::get ( 'menus' , 'MenuController@index' );
 Route::get ('user', 'UserController@index');
+Route::get('user/send', 'UserController@send');
 Route::get ('img/list', 'ImgController@list');
 Route::get('img/user', 'ImgController@user');
 Route::post( 'user/collect' , 'UserController@collect' );
