@@ -51,12 +51,12 @@ class User extends Eloquent
         'remember_token' ,
         'created_at',
     ];
-    protected $appends = ['iconPath', 'date'];
+    protected $appends = ['iconPath'];
 
-    public function getDateAttribute ()
-    {
-        return $this->created_at->diffForHumans();
-    }
+//    public function getDateAttribute ()
+//    {
+//        return $this->created_at->diffForHumans();
+//    }
     public function getIconPathAttribute ()
     {
 //        return $this->created_at;
