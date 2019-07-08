@@ -69,7 +69,14 @@ class UserController extends Controller
     }
     public function title ()
     {
-        return [ 'title'=>'提示📢!!大家可以点设置重新选择自己的位置' ];
+        $h=date ("H");
+
+        if ( $h < 11 ) $titl="早上好!";
+        else if ( $h < 13 ) $titl="中午好！";
+        else if ( $h < 17 ) $titl="下午好！";
+        else $titl="晚上好！";
+
+        return [ 'title'=>$titl . '现在时间' . Carbon::now () ];
     }
     public function create()
     {
