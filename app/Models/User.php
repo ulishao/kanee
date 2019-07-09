@@ -49,11 +49,17 @@ class User extends Eloquent
         'email_verified_at' ,
         'password' ,
         'remember_token' ,
+        'created_at',
     ];
     protected $appends = ['iconPath'];
 
+//    public function getDateAttribute ()
+//    {
+//        return $this->created_at->diffForHumans();
+//    }
     public function getIconPathAttribute ()
     {
+//        return $this->created_at;
         if ( $this->openid == request()->get('openid') ) {
             return '/icon/dog-index.png';
         } else {
