@@ -137,22 +137,22 @@ class UserController extends Controller
 
     public function index ()
     {
-//        if ( request()->get('page') == 1 || empty(request()->get('page')) ) {
-//            $data = User::orderBydesc('created_at')->paginate(10)->toArray();
-//            $user = User::where(['id' => 1])->first()->toArray();
-//            $user[ 'id' ] = '温馨小提示';
-//            $user[ 'name' ] = '';
-////            $aaa = [
-////                '友情提示!重新授权可更换主题颜色。😹' ,
-////                '💸由于昨天广告收益0.02分,广告已被全部关闭' ,
-////
-////            ];
-////            $user[ 'content' ] = $aaa[ array_rand([0, 1, 2], 1) ];
-//            array_unshift($data[ 'data' ], $user);
-//            return $data;
-//        } else {
+        if ( request ()->get ('page') == 1 || empty(request ()->get ('page')) ) {
+            $data          =User::orderBydesc ('created_at')->paginate (10)->toArray ();
+            $user          =User::where ([ 'id'=>1 ])->first ()->toArray ();
+            $user[ 'id' ]  ='温馨小提示';
+            $user[ 'name' ]='';
+//            $aaa = [
+//                '友情提示!重新授权可更换主题颜色。😹' ,
+//                '💸由于昨天广告收益0.02分,广告已被全部关闭' ,
+//
+//            ];
+//            $user[ 'content' ] = $aaa[ array_rand([0, 1, 2], 1) ];
+            array_unshift ($data[ 'data' ] , $user);
+            return $data;
+        } else {
             return User::orderBydesc('created_at')->paginate(10);
-//        }
+        }
     }
 
     public function show1 ()
