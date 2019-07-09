@@ -29,16 +29,16 @@ class UserController extends Controller
         ];
         $app = Factory::miniProgram($config);
         return $app->template_message->send([
-            'touser' => 'og0kA5e1gY8bs_UIvqIPmqh2F8bQ',
-            'template_id' => 'OJYekjV9bzjgBI2EGpm7g-r9JT7Xl1ZRgmGp82kO_tQ',
-            'page' => 'pages/home/home',
-            'form_id' => '8495726efc9f4810934a7e08ab8b8802',
-            'data' => [
-                'keyword1' => '美好的头像',
-                'keyword2' => '2',
-                'keyword3' => Carbon::parse(),
-                'keyword4' => '随即头像很好',
-            ],
+            'touser'     =>'og0kA5aaKCxWXD8F1SUclSr1SSh8' ,
+            'template_id'=> 'OJYekjV9bzjgBI2EGpm7g-r9JT7Xl1ZRgmGp82kO_tQ' ,
+            'page'       => 'pages/home/home' ,
+            'form_id'    =>'463d9d91d8b445f08fbeb4a0b40beed9' ,
+            'data'       => [
+                'keyword1'=>'用户访问记录？' ,
+                'keyword2'=>'5201314' ,
+                'keyword3'=> Carbon::parse() ,
+                'keyword4'=>'不。这是随即头像消息推送' ,
+            ] ,
         ]);
     }
     public function dd()
@@ -137,22 +137,22 @@ class UserController extends Controller
 
     public function index ()
     {
-        if ( request()->get('page') == 1 || empty(request()->get('page')) ) {
-            $data = User::orderBydesc('created_at')->paginate(10)->toArray();
-            $user = User::where(['id' => 1])->first()->toArray();
-            $user[ 'id' ] = '温馨小提示';
-            $user[ 'name' ] = '';
-//            $aaa = [
-//                '友情提示!重新授权可更换主题颜色。😹' ,
-//                '💸由于昨天广告收益0.02分,广告已被全部关闭' ,
-//
-//            ];
-//            $user[ 'content' ] = $aaa[ array_rand([0, 1, 2], 1) ];
-            array_unshift($data[ 'data' ], $user);
-            return $data;
-        } else {
+//        if ( request()->get('page') == 1 || empty(request()->get('page')) ) {
+//            $data = User::orderBydesc('created_at')->paginate(10)->toArray();
+//            $user = User::where(['id' => 1])->first()->toArray();
+//            $user[ 'id' ] = '温馨小提示';
+//            $user[ 'name' ] = '';
+////            $aaa = [
+////                '友情提示!重新授权可更换主题颜色。😹' ,
+////                '💸由于昨天广告收益0.02分,广告已被全部关闭' ,
+////
+////            ];
+////            $user[ 'content' ] = $aaa[ array_rand([0, 1, 2], 1) ];
+//            array_unshift($data[ 'data' ], $user);
+//            return $data;
+//        } else {
             return User::orderBydesc('created_at')->paginate(10);
-        }
+//        }
     }
 
     public function show1 ()
