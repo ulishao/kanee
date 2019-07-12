@@ -22,6 +22,7 @@ Route::get( '/sui' , 'ImgController@sui' );
 Route::get('/sui1', 'ImgController@sui1');
 Route::get( '/img_id' , 'ImgController@show' );
 Route::get( '/user/code' , 'UserController@code' );
+Route::get ('/user/qing_code' , 'UserController@qing_code');
 Route::post( '/user' , 'UserController@create' );
 Route::get ('/user/show', 'UserController@show');
 Route::get('/title', 'UserController@title');

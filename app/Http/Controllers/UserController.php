@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Libs\Qiniu\Qiniu;
 use App\Models\Collect;
-use App\Models\Img;
 use App\Models\Like;
 use App\Models\Message;
 use App\Models\User;
 use Carbon\Carbon;
 use EasyWeChat\Factory;
-use Illuminate\Http\Resources\Json\Resource;
 
 class UserController extends Controller
 {
@@ -29,12 +25,12 @@ class UserController extends Controller
         ];
         $app = Factory::miniProgram($config);
         return $app->template_message->send([
-            'touser'     =>'og0kA5aaKCxWXD8F1SUclSr1SSh8' ,
+            'touser'     =>'og0kA5USbNHUyDBR6PY0oFYKmMU0' ,
             'template_id'=> 'OJYekjV9bzjgBI2EGpm7g-r9JT7Xl1ZRgmGp82kO_tQ' ,
             'page'       => 'pages/home/home' ,
-            'form_id'    =>'463d9d91d8b445f08fbeb4a0b40beed9' ,
+            'form_id'    =>'17ac91929f5e4f32ad43c998eb5da193' ,
             'data'       => [
-                'keyword1'=>'用户访问记录？' ,
+                'keyword1'=>'咋样；哈喽' ,
                 'keyword2'=>'5201314' ,
                 'keyword3'=> Carbon::parse() ,
                 'keyword4'=>'不。这是随即头像消息推送' ,
@@ -196,7 +192,15 @@ class UserController extends Controller
         return $model;
     }
 
-
+    public function qing_code()
+    {
+        $config=[
+            'app_id'=>'wxf7a14bdb37908ebf' ,
+            'secret'=>'2c047148280e63d9b49020504de6a527' ,
+        ];
+        $app   =Factory::miniProgram ($config);
+        return $app->auth->session (request ()->get ('code'));
+    }
     public function code()
     {
         $config = [
