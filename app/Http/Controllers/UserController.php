@@ -65,14 +65,14 @@ class UserController extends Controller
     }
     public function title ()
     {
-        $h=date ("H");
+//        $h=date ("H");
 
-        if ( $h < 11 ) $titl="早上好!";
-        else if ( $h < 13 ) $titl="中午好！";
-        else if ( $h < 17 ) $titl="下午好！";
-        else $titl="晚上好！";
+//        if ( $h < 11 ) $titl="早上好!";
+//        else if ( $h < 13 ) $titl="中午好！";
+//        else if ( $h < 17 ) $titl="下午好！";
+//        else $titl="晚上好！";
 
-        return [ 'title'=>$titl . '现在时间' . Carbon::now () ];
+        return ['title' => '有事请联系微信号:zxmxoxo'];
     }
     public function create()
     {
