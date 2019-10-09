@@ -55,21 +55,21 @@
                         <li class="item-content">
                             <div class="item-media"><i class="icon icon-f7"></i></div>
                             <div class="item-inner">
-                                <div class="item-title">型号</div>
+                                <div class="item-title">住址街路巷代码</div>
                                 <div class="item-after">{{$key->address}}</div>
                             </div>
                         </li>
                         <li class="item-content">
                             <div class="item-media"><i class="icon icon-f7"></i></div>
                             <div class="item-inner">
-                                <div class="item-title">型号</div>
+                                <div class="item-title">住址幢楼号</div>
                                 <div class="item-after">{{$key->dong}}</div>
                             </div>
                         </li>
                         <li class="item-content">
                             <div class="item-media"><i class="icon icon-f7"></i></div>
                             <div class="item-inner">
-                                <div class="item-title">型号</div>
+                                <div class="item-title">住址小区代码</div>
                                 <div class="item-after">{{$key->code}}</div>
                             </div>
                         </li>
