@@ -41,14 +41,14 @@
                         <li class="item-content">
                             <div class="item-media"><i class="icon icon-f7"></i></div>
                             <div class="item-inner">
-                                <div class="item-title">手机号</div>
+                                <div class="item-title">姓名</div>
                                 <div class="item-after">{{$key->name}}</div>
                             </div>
                         </li>
                         <li class="item-content">
                             <div class="item-media"><i class="icon icon-f7"></i></div>
                             <div class="item-inner">
-                                <div class="item-title">型号</div>
+                                <div class="item-title">手机号</div>
                                 <div class="item-after">{{$key->phone}}</div>
                             </div>
                         </li>
