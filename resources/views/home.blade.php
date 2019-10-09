@@ -24,7 +24,7 @@
                 <a class="searchbar-cancel">取消</a>
                 <div class="search-input">
                     <label class="icon icon-search" for="search"></label>
-                    <input type="search" id='search' value="@if($name){{$name}} @endif" placeholder='输入关键字...'/>
+                    <input type="search" id='search' value="@if($name){{$name}}@endif" placeholder='输入关键字...'/>
                 </div>
 
 
@@ -90,6 +90,14 @@
         if (event.keyCode == 13) {
             window.location.href = 'http://swoole.kanee.top/home?name=' + $(this).val()
         }
+    })
+    $("#search").blur(function () {
+        console.log(111)
+        if ($(this).val()) {
+            window.location.href = 'http://swoole.kanee.top/home?name=' + $(this).val()
+        }
+
+
     })
 </script>
 </body>
