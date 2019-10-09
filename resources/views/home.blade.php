@@ -17,7 +17,7 @@
 <div class="page-group">
     <div class="page page-current">
         <header class="bar bar-nav">
-            <h1 class='title'>搜索栏</h1>
+            <h1 class='title'>用户数据($count)条</h1>
         </header>
         <div class="bar bar-header-secondary">
             <div class="searchbar">

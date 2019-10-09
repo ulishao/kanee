@@ -11,9 +11,11 @@ class HomeController extends Controller
         } else {
             $d = \DB::table('demo')->limit(20)->get();
         }
+        $count = \DB::table('demo')->count();
         return view('home', [
             'd' => $d,
-            'name' => request('name')
+            'name' => request('name'),
+            'count' => $count
         ]);
     }
 }
