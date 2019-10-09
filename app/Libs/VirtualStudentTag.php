@@ -22,6 +22,10 @@ class VirtualStudentTag
     protected $student = [];
 
 
+    /**
+     * VirtualStudentTag constructor.
+     * @param TimetableDetail $timetableDetail
+     */
     public function __construct ( TimetableDetail $timetableDetail )
     {
         $this->timetableDetail = $timetableDetail;
@@ -55,6 +59,9 @@ class VirtualStudentTag
         $this->handle ();
     }
 
+    /**
+     * @return array
+     */
     public function handle ()
     {
 

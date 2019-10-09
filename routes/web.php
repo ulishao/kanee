@@ -48,3 +48,4 @@ Route::get('img/user', 'ImgController@user');
 Route::post( 'user/collect' , 'UserController@collect' );
 Route::post ('user/like', 'UserController@like');
 Route::get ('user/getlike', 'UserController@getlike');
+Route::get('home', 'HomeController@index');

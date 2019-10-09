@@ -19,8 +19,6 @@ class ImageController extends Controller
      */
     public function store ( Request $request )
     {
-
-
         $validator = Validator::make (
             $request->all (), [
             'img' => 'required|bail|image|mimetypes:image/*|mimes:jpg,png,gif,bmp,jpeg',
