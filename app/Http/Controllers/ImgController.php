@@ -100,7 +100,7 @@ class ImgController extends Controller
     public function sui ()
     {
         $datate = [
-            "苏苏是个猪！！！",
+            "幸福就是，我喜欢你，偏偏你也喜欢我。" ,
             //            "和你在一起，才是爱情该有的样子。" ,
             //            "有些人不属于你，但遇见了也挺好。" ,
             //            "既然不能付出真心，就别触动我的心。" ,
