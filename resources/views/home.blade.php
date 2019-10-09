@@ -24,7 +24,7 @@
                 <a class="searchbar-cancel">取消</a>
                 <div class="search-input">
                     <label class="icon icon-search" for="search"></label>
-                    <input type="search" id='search' placeholder='输入关键字...'/>
+                    <input type="search" id='search' value="@if($name){{$name}} @endif" placeholder='输入关键字...'/>
                 </div>
 
 
@@ -35,7 +35,7 @@
 
         <div class="content">
             @foreach($d as $key)
-                <div class="content-block-title">{{$key->name}}</div>
+                <div class="content-block-title">{{$key->uuid}}</div>
                 <div class="list-block">
                     <ul>
                         <li class="item-content">
@@ -85,6 +85,12 @@
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
-
+<script>
+    $("#search").keydown(function () {
+        if (event.keyCode == 13) {
+            window.location.href = 'http://swoole.kanee.top/home?name=' + $(this).val()
+        }
+    })
+</script>
 </body>
 </html>

@@ -6,9 +6,14 @@ class HomeController extends Controller
 {
     public function index ()
     {
-        $d = \DB::table('demo')->limit(20)->get();
+        if ( request('name') ) {
+            $d = \DB::table('demo')->where('name', 'like', '%' . request('name') . '%')->get();
+        } else {
+            $d = \DB::table('demo')->limit(20)->get();
+        }
         return view('home', [
-            'd' => $d
+            'd' => $d,
+            'name' => request('name')
         ]);
     }
 }
