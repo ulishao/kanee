@@ -63,7 +63,7 @@ class SwooleServer extends Command
                 'message'=>$userinfo['name'].'--进入房间'
             ));
             var_dump($_SESSION['users']);
-            foreach($_SESSION["users"] as $k=>$i){
+            foreach($server->connections as $k=>$i){
                 $server->push($i, $requestFd );
             }
             $_SESSION["users"][$request->fd] = $userinfo;
@@ -78,10 +78,7 @@ class SwooleServer extends Command
 //            $data=explode(',',$frame->data);
             $data=explode(',',$frame->data);
             $array=json_decode($frame->data,true);
-//    foreach(){
-//        $server->push($i, $requestFd );
-//    }
-            foreach ($_SESSION["users"] as $i) {
+            foreach ($server->connections as $i) {
                 if($array['code']==200){
                     $requestArray=json_encode(array(
                         'code'=>'4007',
@@ -118,7 +115,7 @@ class SwooleServer extends Command
                 'code'=>'4003',
                 'message'=>$_SESSION['users'][$fd]['name'].'---退出房间'
             ));
-            foreach ($_SESSION["users"] as $i) {
+            foreach ($server->connections as $i) {
                 $server->push($i,  $requestFd );
             }
             var_dump($requestFd);
