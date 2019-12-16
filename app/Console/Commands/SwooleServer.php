@@ -45,7 +45,7 @@ class SwooleServer extends Command
             $this->info($request->fd . '链接成功');
             //插入数据库
 //            db($request->fd);
-            $m = file_get_contents( __DIR__ .'/log.txt');
+//            $m = file_get_contents( __DIR__ .'/log.txt');
             $retunr=array(
                 'code'=>'0',
                 'message'=> $request->fd.'--欢迎进入贪吃蛇大作战'
@@ -67,13 +67,13 @@ class SwooleServer extends Command
             }
             $_SESSION["users"][$request->fd] = $userinfo;
             echo count($_SESSION['users'])."\n";
-            file_put_contents( __DIR__ .'/log.txt' , $request->fd);
+//            file_put_contents( __DIR__ .'/log.txt' , $request->fd);
         });
 
         //收到消息回调
         $server->on('message', function (\Swoole\WebSocket\Server $server, $frame) {
             //
-            $m = file_get_contents( __DIR__ .'/log.txt');
+//            $m = file_get_contents( __DIR__ .'/log.txt');
 //            $data=explode(',',$frame->data);
             $data=explode(',',$frame->data);
             $array=json_decode($frame->data,true);
@@ -111,7 +111,7 @@ class SwooleServer extends Command
 
         //关闭链接回调
         $server->on('close', function ($server, $fd) {
-            $m = file_get_contents( __DIR__ .'/log.txt');
+//            $m = file_get_contents( __DIR__ .'/log.txt');
             unset($_SESSION["user"][$fd]);
             $requestFd=json_encode(array(
                 'code'=>'4003',
