@@ -38,7 +38,7 @@ class SwooleServer extends Command
     public function handle()
     {
         //创建server
-        $server = new \Swoole\WebSocket\Server("0.0.0.0", 9502);
+        $server = new \Swoole\WebSocket\Server("0.0.0.0", 9501);
 
         //连接成功回调
         $server->on('open', function (\Swoole\WebSocket\Server $server, $request) {
