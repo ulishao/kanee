@@ -69,13 +69,16 @@ class UserController extends Controller
         return [
             'name'=>'卜枫',
             'mobile'=>'卜枫',
+            'share_image'=>'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3402063479,1936521224&fm=111&gp=0.jpg',
+            'share_title'=>'卜枫',
             'avatar'=>'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3402063479,1936521224&fm=111&gp=0.jpg',
             'desc'=>'联系本人减100元',
             'qrcode'=>'https://m.wwei.cn/static/images/app-wwei.png',
             'cat'=>[
-                '大众',
-                '吉利',
-                '奔腾',
+                [
+                    'color'=>'red',
+                    'name'=>'大众',
+                ]
             ],
         ];
     }
