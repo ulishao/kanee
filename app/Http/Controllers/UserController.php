@@ -67,19 +67,40 @@ class UserController extends Controller
     public function info()
     {
         return [
-            'name'=>'卜枫',
-            'mobile'=>'15003742861',
-            'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
-            'share_title'=>'卜枫 专业汽车销售',
-            'avatar'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
-            'desc'=>'联系本人减100元',
-            'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
-            'cat'=>[
-                [
-                    'color'=>'blue',
-                    'name'=>'奔腾',
+            [
+                'name'=>'卜枫',
+                'mobile'=>'15003742861',
+                'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'share_title'=>'卜枫 专业汽车销售',
+                'avatar'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'desc'=>'联系本人减100元',
+                'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
+                'price'=>'90000.00',
+                'xprice'=>'100000.00',
+                'cat'=>[
+                    [
+                        'color'=>'blue',
+                        'name'=>'奔腾',
+                    ],
                 ],
             ],
+            [
+                'name'=>'卜枫',
+                'mobile'=>'15003742861',
+                'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'share_title'=>'卜枫 专业汽车销售',
+                'avatar'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'desc'=>'联系本人减100元',
+                'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
+                'price'=>'90000.00',
+                'xprice'=>'100000.00',
+                'cat'=>[
+                    [
+                        'color'=>'blue',
+                        'name'=>'奔腾',
+                    ],
+                ],
+            ]
         ];
     }
     public function title ()
