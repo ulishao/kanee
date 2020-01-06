@@ -69,15 +69,15 @@ class UserController extends Controller
         return [
             [
                 'name'=>'卜枫',
-                'title'=>'奔腾iii',
+                'title'=>'奔腾T77',
                 'mobile'=>'15003742861',
-                'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'share_image'=>'https://dss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1892624473.jpg',
                 'share_title'=>'卜枫 专业汽车销售',
-                'avatar'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'avatar'=>'https://dss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1892624473.jpg',
                 'desc'=>'联系本人减100元',
                 'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
-                'price'=>'90000.00',
-                'xprice'=>'100000.00',
+                'price'=>'9.2w',
+                'xprice'=>'10w',
                 'cat'=>[
                     [
                         'color'=>'blue',
@@ -87,15 +87,15 @@ class UserController extends Controller
             ],
             [
                 'name'=>'卜枫',
-                'title'=>'奔腾iii',
+                'title'=>'奔腾T99',
                 'mobile'=>'15003742861',
-                'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'share_image'=>'https://img.cheshi-img.com/product/1_720/p/59300/59347/5d80829b5f150.jpg',
                 'share_title'=>'卜枫 专业汽车销售',
-                'avatar'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+                'avatar'=>'https://img.cheshi-img.com/product/1_720/p/59300/59347/5d80829b5f150.jpg',
                 'desc'=>'联系本人减100元',
                 'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
-                'price'=>'90000.00',
-                'xprice'=>'100000.00',
+                'price'=>'13.2w',
+                'xprice'=>'20w',
                 'cat'=>[
                     [
                         'color'=>'blue',
