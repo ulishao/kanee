@@ -76,14 +76,6 @@ class UserController extends Controller
             'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
             'cat'=>[
                 [
-                    'color'=>'red',
-                    'name'=>'大众',
-                ],
-                [
-                    'color'=>'yellow',
-                    'name'=>'吉利',
-                ],
-                [
                     'color'=>'blue',
                     'name'=>'奔腾',
                 ],
