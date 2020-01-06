@@ -69,6 +69,7 @@ class UserController extends Controller
         return [
             [
                 'name'=>'卜枫',
+                'title'=>'奔腾iii',
                 'mobile'=>'15003742861',
                 'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
                 'share_title'=>'卜枫 专业汽车销售',
@@ -86,6 +87,7 @@ class UserController extends Controller
             ],
             [
                 'name'=>'卜枫',
+                'title'=>'奔腾iii',
                 'mobile'=>'15003742861',
                 'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
                 'share_title'=>'卜枫 专业汽车销售',
