@@ -15,6 +15,7 @@ Route::get('/', function () {
     return "";
 
 });
+Route::get('user/info', 'UserController@info');
 Route::get ('/dd' , 'UserController@dd');
 Route::get('/img', 'ImgController@index');
 Route::get( '/url' , 'ImgController@url' );
@@ -49,3 +50,4 @@ Route::post( 'user/collect' , 'UserController@collect' );
 Route::post ('user/like', 'UserController@like');
 Route::get ('user/getlike', 'UserController@getlike');
 Route::get('home', 'HomeController@index');
+
