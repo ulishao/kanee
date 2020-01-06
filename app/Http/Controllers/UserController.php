@@ -68,12 +68,12 @@ class UserController extends Controller
     {
         return [
             'name'=>'卜枫',
-            'mobile'=>'卜枫',
-            'share_image'=>'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3402063479,1936521224&fm=111&gp=0.jpg',
-            'share_title'=>'卜枫',
-            'avatar'=>'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3402063479,1936521224&fm=111&gp=0.jpg',
+            'mobile'=>'15003742861',
+            'share_image'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
+            'share_title'=>'卜枫 专业汽车销售',
+            'avatar'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133843.jpg',
             'desc'=>'联系本人减100元',
-            'qrcode'=>'https://m.wwei.cn/static/images/app-wwei.png',
+            'qrcode'=>'https://pic.969009.com/hong/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200106133639.jpg',
             'cat'=>[
                 [
                     'color'=>'red',
