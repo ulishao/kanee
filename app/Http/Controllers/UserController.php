@@ -78,7 +78,15 @@ class UserController extends Controller
                 [
                     'color'=>'red',
                     'name'=>'大众',
-                ]
+                ],
+                [
+                    'color'=>'yellow',
+                    'name'=>'吉利',
+                ],
+                [
+                    'color'=>'blue',
+                    'name'=>'奔腾',
+                ],
             ],
         ];
     }
