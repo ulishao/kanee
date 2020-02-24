@@ -162,7 +162,7 @@ class ImgController extends Controller
                         "因为没得到，所以显得格外好，这不是爱。",
         ];
 
-        $ids = [1];
+        $ids = $datate;
         if ( !empty(request()->get('ids')) ) {
             $ids = explode(",", request()->get('ids'));
             $ids = array_filter($ids);
