@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collect;
+use App\Models\Ka;
 use App\Models\Like;
 use App\Models\Message;
 use App\Models\User;
@@ -11,6 +12,11 @@ use EasyWeChat\Factory;
 
 class UserController extends Controller
 {
+    public function ka()
+    {
+        Ka::create(request()->post());
+        return true;
+    }
 
     public function form ()
     {

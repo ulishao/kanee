@@ -51,3 +51,8 @@ Route::post ('user/like', 'UserController@like');
 Route::get ('user/getlike', 'UserController@getlike');
 Route::get('home', 'HomeController@index');
 
+/**
+ * 卡片
+ */
+Route::post('ka/create', 'UserController@ka');
+
