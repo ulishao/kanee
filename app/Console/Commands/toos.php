@@ -19,7 +19,7 @@ class Toos extends Command
      *
      * @var string
      */
-    protected $signature = 'tous:run';
+    protected $signature = 'tous11:run';
 
     /**
      * The console command description.
