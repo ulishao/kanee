@@ -171,6 +171,13 @@ class ImgController extends Controller
         $dd           = array_rand($ids, 1);
         $data         = json_decode ($redis->srandmember ('img_id_data:' . $ids[ $dd ]) , true);
         $data[ 'te' ] = $datate[ array_rand ($datate , 1) ];
+        if ( empty($data[ 'title' ]) ) {
+            $ids = [1];
+            $dd = array_rand($ids, 1);
+            $data = json_decode($redis->srandmember('img_id_data:' . $ids[ $dd ]), true);
+            $data[ 'te' ] = $datate[ array_rand($datate, 1) ];
+            return $data;
+        }
         return $data;
         //$return;
     }

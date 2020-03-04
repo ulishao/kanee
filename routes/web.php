@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['prefix' => 'h5'], function () {
+    Route::get('home', 'H5\HomeController@index');
+});
 Route::get('/', function () {
     return "";
 
@@ -22,6 +24,7 @@ Route::get( '/sui' , 'ImgController@sui' );
 Route::get('/sui1', 'ImgController@sui1');
 Route::get( '/img_id' , 'ImgController@show' );
 Route::get( '/user/code' , 'UserController@code' );
+Route::get('/user/code_ka', 'UserController@code_ka');
 Route::get ('/user/qing_code' , 'UserController@qing_code');
 Route::post( '/user' , 'UserController@create' );
 Route::get ('/user/show', 'UserController@show');

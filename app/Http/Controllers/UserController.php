@@ -37,23 +37,24 @@ class UserController extends Controller
             ] ,
         ]);
     }
+
     public function dd()
     {
 
         $data=User::whereNull ('longitude')->whereNotNull ('ip')->get ()->toArray ();
         foreach ($data as $key=>$datum) {
 //            try{
-            $url='http://api.map.baidu.com/location/ip?v=2.0&ak=hmHVRwKE6r8IpmAKWGhgxiF6QVvQhs7s&ip=' . $datum[ 'ip' ] . '&coor=gcj02';
-            $dd =json_decode (file_get_contents ($url) , true);
-            $id =$datum[ 'id' ] - 10000;
+            $url = 'http://api.map.baidu.com/location/ip?v=2.0&ak=hmHVRwKE6r8IpmAKWGhgxiF6QVvQhs7s&ip=' . $datum[ 'ip' ] . '&coor=gcj02';
+            $dd = json_decode(file_get_contents($url), true);
+            $id = $datum[ 'id' ] - 10000;
             if ( empty($dd[ 'content' ][ 'point' ]) ) {
-                dd ($dd);
+                dd($dd);
             }
-            User::where ([ 'id'=>$id ])->update ([
-                'longitude'=>$dd[ 'content' ][ 'point' ][ 'x' ] ,
-                'latitude' =>$dd[ 'content' ][ 'point' ][ 'y' ],
+            User::where(['id' => $id])->update([
+                'longitude' => $dd[ 'content' ][ 'point' ][ 'x' ],
+                'latitude' => $dd[ 'content' ][ 'point' ][ 'y' ],
             ]);
-            sleep (2);
+            sleep(2);
 //            }catch (\ErrorException $exception){
 //                echo $datum['id'].'err';
 //            }
@@ -209,6 +210,16 @@ class UserController extends Controller
         ];
         $app    = Factory::miniProgram($config);
         return $app->auth->session( request ()->get ('code'));
+    }
+
+    public function code_ka ()
+    {
+        $config = [
+            'app_id' => 'wxbcbb56b323164e45',
+            'secret' => '2b16b97431a2e38f993d62fe09310187',
+        ];
+        $app = Factory::miniProgram($config);
+        return $app->auth->session(request()->get('code'));
     }
 
     /**
