@@ -44,6 +44,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function tag ()
+    {
+        return [
+            'url' => 'https://api.kanee.top/1.png',
+            'tag' => '蜡笔小新'
+        ];
+    }
     public function dd()
     {
 
