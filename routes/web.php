@@ -59,3 +59,7 @@ Route::get('home', 'HomeController@index');
  */
 Route::post('ka/create', 'UserController@ka');
 
+/**
+ * tag
+ */
+Route::get('user/tag', 'UserController@tag');
