@@ -25,6 +25,7 @@ class UserController extends Controller
     {
         return Like::query()->select(['*', \DB::raw('count(id) as num')])
             ->with('user')
+            ->where('openid', '<>', '')
             ->groupBy('openid')
             ->orderBy('num', 'desc')->limit(12)->get();
     }
