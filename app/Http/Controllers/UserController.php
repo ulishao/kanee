@@ -23,7 +23,10 @@ class UserController extends Controller
      */
     public function h ()
     {
-        return Like::query()->select(['*', \DB::raw('count(id) as num')])->groupBy('openid')->orderBy('num', 'desc')->limit(10)->get();
+        return Like::query()->select(['*', \DB::raw('count(id) as num')])
+            ->with('user')
+            ->groupBy('openid')
+            ->orderBy('num', 'desc')->limit(12)->get();
     }
 
     public function form ()
