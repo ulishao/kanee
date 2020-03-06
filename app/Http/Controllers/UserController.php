@@ -18,6 +18,14 @@ class UserController extends Controller
         return true;
     }
 
+    /**
+     * 活跃用户
+     */
+    public function h ()
+    {
+        return Like::query()->select(['*', \DB::raw('count(id) as num')])->groupBy('openid')->orderBy('num', 'desc')->limit(10)->get();
+    }
+
     public function form ()
     {
         return Message::create(request()->post());
