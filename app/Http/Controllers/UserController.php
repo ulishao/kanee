@@ -214,7 +214,7 @@ class UserController extends Controller
             ->with('data')
             ->where(['openid' => request()->get('openid')])
             ->whereNotNull('date')
-            ->orderBy('date', 'desc')->groupBy('date')->paginate(20);
+            ->orderBy('date', 'desc')->groupBy('date')->paginate(6);
 
     }
     public function getlike ()
