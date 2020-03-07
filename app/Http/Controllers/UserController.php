@@ -33,9 +33,8 @@ class UserController extends Controller
             $i = 12 - count($a);
             $b = Like::query()->select(['*', \DB::raw('0 as num')])
                 ->with('user')
-                ->where('openid', '<>', '')
-                ->groupBy('openid')
-                ->orderBy('num', 'desc')->limit($i)->get();
+                ->whereDate('created_at', '<>', Carbon::parse()->toDateString())
+                ->where('openid', '<>', '')->orderBy('created_at', 'desc')->limit($i)->get();
             $a = array_merge($a->toArray(), $b->toArray());
         }
         return $a;
