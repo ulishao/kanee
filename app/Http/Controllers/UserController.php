@@ -34,6 +34,7 @@ class UserController extends Controller
             $b = Like::query()->select(['*', \DB::raw('0 as num')])
                 ->with('user')
                 ->whereDate('created_at', '<>', Carbon::parse()->toDateString())
+                ->groupBy('openid')
                 ->where('openid', '<>', '')->orderBy('created_at', 'desc')->limit($i)->get();
             $a = array_merge($a->toArray(), $b->toArray());
         }
