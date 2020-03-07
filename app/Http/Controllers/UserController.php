@@ -26,6 +26,7 @@ class UserController extends Controller
         return Like::query()->select(['*', \DB::raw('count(id) as num')])
             ->with('user')
             ->where('openid', '<>', '')
+            ->whereDate('created_at', Carbon::parse()->toDateString())
             ->groupBy('openid')
             ->orderBy('num', 'desc')->limit(12)->get();
     }
