@@ -31,11 +31,12 @@ class UserController extends Controller
             ->orderBy('num', 'desc')->limit(12)->get();
         if ( count($a) < 12 ) {
             $i = 12 - count($a);
-            $b = Like::query()->select(['*', \DB::raw('0 as num')])
+            $b = Like::query()->select(['likes.*', 'users.*', \DB::raw('0 as num')])
+                ->leftJoin('users', 'users.openid', '=', 'likes.openid')
                 ->with('user')
-                ->whereDate('created_at', '<>', Carbon::parse()->toDateString())
-                ->groupBy('openid')
-                ->where('openid', '<>', '')->orderBy('created_at', 'desc')->limit($i)->get();
+                ->whereDate('users.created_at', '<>', Carbon::parse()->toDateString())
+                ->groupBy('likes.openid')
+                ->where('users.openid', '<>', '')->orderBy('users.created_at', 'desc')->limit($i)->get();
             $a = array_merge($a->toArray(), $b->toArray());
         }
         return $a;
