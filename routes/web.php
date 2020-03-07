@@ -53,6 +53,7 @@ Route::post( 'user/collect' , 'UserController@collect' );
 Route::post ('user/like', 'UserController@like');
 Route::get ('user/getlike', 'UserController@getlike');
 Route::get('user/getlike1', 'UserController@getlike1');
+Route::get('user/is_like', 'UserController@is_like');
 Route::get('home', 'HomeController@index');
 
 /**
