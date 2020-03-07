@@ -271,11 +271,12 @@ class UserController extends Controller
 
     public function is_like ()
     {
+        $model = Like::query()->where([
+            'openid' => request()->post('openid'),
+            'url' => request()->post('url'),
+        ])->exists();
         return [
-            'shou' => Like::query()->where([
-                'openid' => request()->post('openid'),
-                'url' => request()->post('url'),
-            ])->exists()
+            'shou' => $model == true ? false : true
         ];
     }
     public function update ()
