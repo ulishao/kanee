@@ -23,12 +23,23 @@ class UserController extends Controller
      */
     public function h ()
     {
-        return Like::query()->select(['*', \DB::raw('count(id) as num')])
+        $a = Like::query()->select(['*', \DB::raw('count(id) as num')])
             ->with('user')
             ->where('openid', '<>', '')
             ->whereDate('created_at', Carbon::parse()->toDateString())
             ->groupBy('openid')
             ->orderBy('num', 'desc')->limit(12)->get();
+        if ( count($a) < 12 ) {
+            $i = 12 - count($a);
+            $b = Like::query()->select(['*', \DB::raw('0 as num')])
+                ->with('user')
+                ->where('openid', '<>', '')
+                ->groupBy('openid')
+                ->orderBy('num', 'desc')->limit($i)->get();
+            $a = array_merge($a->toArray(), $b->toArray());
+        }
+        return $a;
+
     }
 
     public function form ()
