@@ -13,6 +13,7 @@ use EasyWeChat\Factory;
 
 class UserController extends Controller
 {
+
     public function ka()
     {
         Ka::create(request()->post());
@@ -209,10 +210,11 @@ class UserController extends Controller
 
     public function getlike1 ()
     {
-        return Like::select(\DB::raw("date_format(created_at,'%Y%m%d') AS date"))
+        return Like::select('date')
             ->with('data')
+            ->where(['openid' => request()->get('openid')])
             ->whereNotNull('date')
-            ->orderBy('created_at', 'asc')->groupBy('date')->paginate(20);
+            ->orderBy('date', 'desc')->groupBy('date')->paginate(20);
 
     }
     public function getlike ()

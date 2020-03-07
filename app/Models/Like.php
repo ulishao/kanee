@@ -37,6 +37,6 @@ class Like extends Eloquent
 
     public function data ()
     {
-        return $this->hasMany(Like::class, 'date', 'date');
+        return $this->hasMany(Like::class, 'date', 'date')->where('openid', request()->get('openid'));
     }
 }
