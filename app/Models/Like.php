@@ -26,11 +26,17 @@ class Like extends Eloquent
     protected $fillable = [
         'url' ,
         'openid' ,
+        'date',
         'ip',
     ];
 
     public function user ()
     {
         return $this->hasOne(User::class, 'openid', 'openid');
+    }
+
+    public function data ()
+    {
+        return $this->hasMany(Like::class, 'date', 'date');
     }
 }

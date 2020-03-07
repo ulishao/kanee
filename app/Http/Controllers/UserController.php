@@ -6,6 +6,7 @@ use App\Models\Collect;
 use App\Models\Ka;
 use App\Models\Like;
 use App\Models\Message;
+use App\Models\Resource;
 use App\Models\User;
 use Carbon\Carbon;
 use EasyWeChat\Factory;
@@ -201,10 +202,19 @@ class UserController extends Controller
         ])->first () ) {
             return $model;
         }
+        $add[ 'date' ] = Carbon::parse()->toDateString();
         $add[ 'ip' ] = request()->getClientIp();
         return Like::create( $add );
     }
 
+    public function getlike1 ()
+    {
+        return Like::select(\DB::raw("date_format(created_at,'%Y%m%d') AS date"))
+            ->with('data')
+            ->whereNotNull('date')
+            ->orderBy('created_at', 'asc')->groupBy('date')->paginate(20);
+
+    }
     public function getlike ()
     {
         if ( request ()->get ('openid') ) {
