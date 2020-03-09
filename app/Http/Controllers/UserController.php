@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libs\Qiniu\Qiniu;
 use App\Models\Collect;
 use App\Models\Ka;
 use App\Models\Like;
@@ -28,19 +29,19 @@ class UserController extends Controller
         $a = Like::query()->select(['*', \DB::raw('count(id) as num')])
             ->with('user')
             ->where('openid', '<>', '')
-            ->whereDate('created_at', Carbon::parse()->toDateString())
+//            ->whereDate('created_at', Carbon::parse()->toDateString())
             ->groupBy('openid')
-            ->orderBy('num', 'desc')->limit(12)->get();
-        if ( count($a) < 12 ) {
-            $i = 12 - count($a);
-            $b = Like::query()->select(['likes.*', 'users.*', \DB::raw('0 as num')])
-                ->leftJoin('users', 'users.openid', '=', 'likes.openid')
-                ->with('user')
-                ->whereDate('users.created_at', '<>', Carbon::parse()->toDateString())
-                ->groupBy('likes.openid')
-                ->where('users.openid', '<>', '')->orderBy('users.created_at', 'desc')->limit($i)->get();
-            $a = array_merge($a->toArray(), $b->toArray());
-        }
+            ->orderBy('num', 'desc')->limit(6)->get();
+//        if ( count($a) < 6 ) {
+//            $i = 6 - count($a);
+//            $b = Like::query()->select(['likes.*', 'users.*', \DB::raw('0 as num')])
+//                ->leftJoin('users', 'users.openid', '=', 'likes.openid')
+//                ->with('user')
+//                ->whereDate('users.created_at', '<>', Carbon::parse()->toDateString())
+//                ->groupBy('likes.openid')
+//                ->where('users.openid', '<>', '')->orderBy('users.created_at', 'desc')->limit($i)->get();
+//            $a = array_merge($a->toArray(), $b->toArray());
+//        }
         return $a;
 
     }
@@ -57,18 +58,35 @@ class UserController extends Controller
             'secret' => 'fe93bbb9245f91702302b5846efa69b3',
         ];
         $app = Factory::miniProgram($config);
-        return $app->template_message->send([
-            'touser'     =>'og0kA5USbNHUyDBR6PY0oFYKmMU0' ,
-            'template_id'=> 'OJYekjV9bzjgBI2EGpm7g-r9JT7Xl1ZRgmGp82kO_tQ' ,
-            'page'       => 'pages/home/home' ,
-            'form_id'    =>'17ac91929f5e4f32ad43c998eb5da193' ,
-            'data'       => [
-                'keyword1'=>'咋样；哈喽' ,
-                'keyword2'=>'5201314' ,
-                'keyword3'=> Carbon::parse() ,
-                'keyword4'=>'不。这是随即头像消息推送' ,
-            ] ,
-        ]);
+//        $a =$app->template_message->getTemplates(1,10);
+//        dd($a);
+        $data = [
+            'template_id' => '95jlVcDcdxPeP1BvdlSYSd99u3rx2PBvII6O4yoPQow', // 所需下发的订阅模板id
+            'touser' => 'og0kA5e1gY8bs_UIvqIPmqh2F8bQ',     // 接收者（用户）的 openid
+            'page' => 'pages/home/home',       // 点击模板卡片后的跳转页面，仅限本小程序内的页面。支持带参数,（示例index?foo=bar）。该字段不填则模板无跳转。
+            'data' => [         // 模板内容，格式形如 { "key1": { "value": any }, "key2": { "value": any } }
+                'thing1' => [
+                    'value' => '新增图片110张',
+                ],
+                'date2' => [
+                    'value' => Carbon::parse()->toDateString(),
+                ],
+            ],
+        ];
+
+        return $app->subscribe_message->send($data);
+//        return $app->template_message->send([
+//            'touser'     =>'og0kA5e1gY8bs_UIvqIPmqh2F8bQ' ,
+//            'template_id'=> '95jlVcDcdxPeP1BvdlSYSd99u3rx2PBvII6O4yoPQow' ,
+//            'page'       => 'pages/home/home' ,
+//            'form_id'    =>'5267cf1241514d64ba49bd081c8b4d6d' ,
+//            'data'       => [
+//                'keyword1'=>'咋样；哈喽' ,
+//                'keyword2'=>'5201314' ,
+//                'keyword3'=> Carbon::parse() ,
+//                'keyword4'=>'不。这是随即头像消息推送' ,
+//            ] ,
+//        ]);
     }
 
     public function tag ()
@@ -181,14 +199,21 @@ class UserController extends Controller
 
         if($model = User::where('openid',request ()->post ('openid'))->first()) {
             if ( request ()->post ('avatar') ) {
-                $model->avatar=request ()->post ('avatar');
-                $model->ip    =request ()->getClientIp ();
+                $data = file_get_contents(request ()->post ('avatar'));
+                $url = Qiniu::upload('user' , $data);
+                $model->avatar = $url['host_url'];
+                $model->ip    = request ()->getClientIp ();
                 $model->save ();
             }
 
             return $model;
         }
         $data         = request()->post();
+        if ( request ()->post ('avatar') ) {
+            $dataD = file_get_contents(request ()->post ('avatar'));
+            $url = Qiniu::upload('user' , $dataD);
+            $data['avatar'] = $url['host_url'];
+        }
         $data[ 'ip' ] = request ()->getClientIp ();
 //        $data[ 'url' ] = $url[ 'host_url' ];
         return User::create($data);
@@ -311,11 +336,11 @@ class UserController extends Controller
 
     public function qing_code()
     {
-        $config=[
+        $config = [
             'app_id'=>'wxf7a14bdb37908ebf' ,
             'secret'=>'2c047148280e63d9b49020504de6a527' ,
         ];
-        $app   =Factory::miniProgram ($config);
+        $app   = Factory::miniProgram ($config);
         return $app->auth->session (request ()->get ('code'));
     }
     public function code()
@@ -339,19 +364,17 @@ class UserController extends Controller
     }
 
     /**
-     *
      * @param string $prefix
-     * @access public uuid
      * @return string
-     * @author shaowei
      */
     public function uuid( $prefix = '' )
-    {
+     {
         $chars = md5( uniqid( mt_rand() , true ) );
         $uuid  = substr( $chars , 0 , 8 ) . '-';
         $uuid  .= substr( $chars , 8 , 4 ) . '-';
         $uuid  .= substr( $chars , 12 , 4 ) . '-';
         $uuid  .= substr( $chars , 16 , 4 ) . '-';
+
         $uuid  .= substr( $chars , 20 , 12 );
         return $prefix . $uuid;
     }
