@@ -49,7 +49,7 @@ class Tuzhuan extends Command
     public function handle ()
     {
         $i = 10;
-        Img::query()->where('qq_imgs', '=', '')->chunk(10, function ( $model ) use ( $i ) {
+        Img::query()->whereNull('qq_imgs')->chunk(10, function ( $model ) use ( $i ) {
             echo $i . '<br>';
             foreach ($model as $item) {
                 $qq_imgs = [];
