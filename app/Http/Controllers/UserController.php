@@ -31,9 +31,9 @@ class UserController extends Controller
             ->where('openid', '<>', '')
             ->whereDate('created_at', Carbon::parse()->toDateString())
             ->groupBy('openid')
-            ->orderBy('num', 'desc')->limit(12)->get();
-        if ( count($a) < 12 ) {
-            $i = 12 - count($a);
+            ->orderBy('num', 'desc')->limit(6)->get();
+        if ( count($a) < 6 ) {
+            $i = 6 - count($a);
             $b = Like::query()->select(['likes.*', 'users.*', \DB::raw('0 as num')])
                 ->leftJoin('users', 'users.openid', '=', 'likes.openid')
                 ->with('user')
