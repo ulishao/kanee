@@ -31,7 +31,7 @@ class Img extends Eloquent
 
     protected $casts = [ 'size' => 'int' ];
 
-    protected $fillable = [ 'title' , 'id' , 'imgs' , 'img' , 'size' , 'source_url' ,'category_id' ];
+    protected $fillable = ['title', 'id', 'qq_imgs', 'imgs', 'img', 'size', 'source_url', 'category_id'];
     protected $appends = ['date'];
     public function getImgAttribute( $value )
     {
@@ -45,11 +45,11 @@ class Img extends Eloquent
     public function getImgsAttribute( $value )
     {
         $data = [];
-        $datas = (array)array_filter(explode(',', $value));
-        foreach ($datas as $value) {
-            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand(1, 9999);
-        }
-        return $data;
+        return (array)array_filter(explode(',', $value));
+//        foreach ($datas as $value) {
+//            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand(1, 9999);
+//        }
+//        return $data;
     }
 
     public function imgLabel ()
