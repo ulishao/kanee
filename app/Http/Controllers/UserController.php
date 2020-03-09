@@ -202,7 +202,7 @@ class UserController extends Controller
                 $data = file_get_contents(request ()->post ('avatar'));
                 $url = Qiniu::upload('user' , $data);
                 $model->avatar = $url['host_url'];
-                $model->ip    =request ()->getClientIp ();
+                $model->ip    = request ()->getClientIp ();
                 $model->save ();
             }
 
