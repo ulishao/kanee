@@ -29,19 +29,19 @@ class UserController extends Controller
         $a = Like::query()->select(['*', \DB::raw('count(id) as num')])
             ->with('user')
             ->where('openid', '<>', '')
-            ->whereDate('created_at', Carbon::parse()->toDateString())
+//            ->whereDate('created_at', Carbon::parse()->toDateString())
             ->groupBy('openid')
             ->orderBy('num', 'desc')->limit(6)->get();
-        if ( count($a) < 6 ) {
-            $i = 6 - count($a);
-            $b = Like::query()->select(['likes.*', 'users.*', \DB::raw('0 as num')])
-                ->leftJoin('users', 'users.openid', '=', 'likes.openid')
-                ->with('user')
-                ->whereDate('users.created_at', '<>', Carbon::parse()->toDateString())
-                ->groupBy('likes.openid')
-                ->where('users.openid', '<>', '')->orderBy('users.created_at', 'desc')->limit($i)->get();
-            $a = array_merge($a->toArray(), $b->toArray());
-        }
+//        if ( count($a) < 6 ) {
+//            $i = 6 - count($a);
+//            $b = Like::query()->select(['likes.*', 'users.*', \DB::raw('0 as num')])
+//                ->leftJoin('users', 'users.openid', '=', 'likes.openid')
+//                ->with('user')
+//                ->whereDate('users.created_at', '<>', Carbon::parse()->toDateString())
+//                ->groupBy('likes.openid')
+//                ->where('users.openid', '<>', '')->orderBy('users.created_at', 'desc')->limit($i)->get();
+//            $a = array_merge($a->toArray(), $b->toArray());
+//        }
         return $a;
 
     }
