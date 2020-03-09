@@ -191,7 +191,7 @@ class ImgController extends Controller
         }
         if ( \request ()->get ('name') ) {
             $id = ImgLabel::where (['label' => \request ()->get ('name')])->pluck ('img_id')->toArray ();
-            $query = Img::whereIn ('id', $id)->orWhere('title','like',\request ()->get ('name'));
+            $query = Img::whereIn ('id', $id)->orWhere('title','like','%'.\request ()->get ('name').'%');
         } else {
             $redis = app('redis.connection');
             $dd = array_rand($ids, 1);
