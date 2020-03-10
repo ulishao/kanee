@@ -55,9 +55,14 @@ class Tuzhuan extends Command
                 $qq_imgs = [];
                 foreach ($item->imgs as $img) {
 
-                    $data = file_get_contents($img);
-                    $url = Qiniu::upload('user', $data);
-                    $qq_imgs[] = $url[ 'host_url' ];
+                    try {
+                        $data = file_get_contents($img);
+                        $url = Qiniu::upload('user', $data);
+                        $qq_imgs[] = $url[ 'host_url' ];
+                    } catch ( Exception $exception ) {
+
+                    }
+
                 }
                 echo $item->id . '-' . $item->title . '<br>';
                 Img::query()->where(['id' => $item->id])->update([
