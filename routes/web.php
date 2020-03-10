@@ -66,3 +66,4 @@ Route::post('ka/create', 'UserController@ka');
  */
 Route::get('user/tag', 'UserController@tag');
 Route::get('user/h', 'UserController@h');
+Route::get('user/code_qq', 'UserController@code_qq');

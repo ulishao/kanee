@@ -21,6 +21,15 @@ class UserController extends Controller
         return true;
     }
 
+    public function code_qq ()
+    {
+        $code = request('code', '5316df937cc872d8c4251cc29b5647f6');
+        $appid = '1110319770';
+        $secret = 'rcqcrhqSiYpco9IB';
+
+        $code = "https://api.q.qq.com/sns/jscode2session?appid={$appid}&secret={$secret}&js_code={$code}&grant_type=authorization_code";
+        return file_get_contents($code);
+    }
     /**
      * 活跃用户
      */
