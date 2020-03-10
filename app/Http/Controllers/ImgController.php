@@ -320,7 +320,7 @@ class ImgController extends Controller
             $ids = explode (",",request ()->get ('ids'));
             $ids = array_filter  ($ids);
         }
-        $data = Img::whereIn('category_id', $ids)->where('imgs', 'like', '%2019%')->whereNotNull('qq_imgs')->pluck('id')->toArray();
+        $data = Img::whereIn('category_id', $ids)->where('source_url', 'like', '%2019%')->whereNotNull('qq_imgs')->pluck('id')->toArray();
         $a        = array_rand( $data , 1 );
         $data = Img::where(['id' => $data[ $a ]])->with('imgLabel')->whereNotNull('qq_imgs')->select(['id', 'qq_imgs as imgs', 'title'])->first();
         $data[ 'te' ] = $datate[ array_rand($datate, 1) ];
