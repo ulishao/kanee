@@ -35,6 +35,7 @@ class User extends Eloquent
 
     protected $fillable = [
         'name' ,
+        'source',
         'url' ,
         'email' ,
         'latitude' ,
