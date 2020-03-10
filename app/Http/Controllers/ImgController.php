@@ -222,11 +222,11 @@ class ImgController extends Controller
         return Img::where( 'id' , \request()->get( 'id' ) )->first();
     }
 
-    public function url( Request $request )
+    public function url ( $url )
     {
 
         $http = new Client();
-        $a    = $http->get( $request->get( 'url' ) )->getBody()->getContents();
+        $a = $http->get($url)->getBody()->getContents();
         header ("content-type: image/jpeg; charset=UTF-8");
         //使用图片头输出浏览器
         echo $a;

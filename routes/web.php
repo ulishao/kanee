@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('user/info', 'UserController@info');
 Route::get ('/dd' , 'UserController@dd');
 Route::get('/img', 'ImgController@index');
-Route::get( '/url' , 'ImgController@url' );
+Route::get('/url/{url}', 'ImgController@url');
 Route::get( '/sui' , 'ImgController@sui' );
 Route::get('/sui1', 'ImgController@sui1');
 Route::get( '/img_id' , 'ImgController@show' );

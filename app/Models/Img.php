@@ -35,7 +35,7 @@ class Img extends Eloquent
     protected $appends = ['date'];
     public function getImgAttribute( $value )
     {
-        return 'https://api.kanee.top/url?url=' . $value;
+        return 'https://api.kanee.top/url/' . $value;
     }
 
     public function getDateAttribute ()
@@ -47,7 +47,7 @@ class Img extends Eloquent
         $data = [];
         $datas = (array)array_filter(explode(',', $value));
         foreach ($datas as $value) {
-            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand(1, 9999);
+            $data[] = 'https://api.kanee.top/url/' . $value . '?' . rand(1, 9999);
         }
         return $data;
     }
