@@ -48,6 +48,11 @@ class Img extends Eloquent
 //        return $data;
     }
 
+    public function getQqImgsAttribute ( $value )
+    {
+        return (array)array_filter(explode(',', $value));
+    }
+
     public function imgLabel ()
     {
         return $this->hasMany (ImgLabel::class, 'img_id', 'id');
