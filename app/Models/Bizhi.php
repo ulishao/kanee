@@ -39,9 +39,13 @@ class Bizhi extends Eloquent
         'urlf'
     ];
 
+    public function getUrlsAttribute ( $value )
+    {
+        return 'https://api.kanee.top/url?url=' . $value;
+    }
     public function getUrlfAttribute ()
     {
-        return str_replace('1080x1920.jpeg', '360x640.jpeg', $this->url);
+        return 'https://api.kanee.top/url?url=' . str_replace('1080x1920.jpeg', '360x640.jpeg', $this->url);
     }
 
     public static function createTable ( $id, $data )

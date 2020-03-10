@@ -45,11 +45,11 @@ class Img extends Eloquent
     public function getImgsAttribute( $value )
     {
         $data = [];
-        return (array)array_filter(explode(',', $value));
-//        foreach ($datas as $value) {
-//            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand(1, 9999);
-//        }
-//        return $data;
+        $datas = (array)array_filter(explode(',', $value));
+        foreach ($datas as $value) {
+            $data[] = 'https://api.kanee.top/url?url=' . $value . '?' . rand(1, 9999);
+        }
+        return $data;
     }
 
     public function imgLabel ()
