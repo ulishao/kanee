@@ -256,7 +256,7 @@ class UserController extends Controller
         if ( request ()->get ('openid') ) {
             return Like::where (['openid' => request ()->get ('openid')])->orderBydesc ('created_at')->paginate (20);
         } else {
-            return Like::query()->select('like.*')->leftJoin('users','users.openid','=','likes.openid')->where('users.openid','<>','')->orderBydesc('likes.created_at')->paginate(40);
+            return Like::query()->select('likes.*')->leftJoin('users','users.openid','=','likes.openid')->where('users.openid','<>','')->orderBydesc('likes.created_at')->paginate(40);
         }
     }
 //curl 没有做错误处理
