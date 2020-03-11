@@ -208,8 +208,8 @@ class UserController extends Controller
 
         if($model = User::where('openid',request ()->post ('openid'))->first()) {
             if ( request ()->post ('avatar') ) {
-                        $avatar = str_replace('/132' , '/0' , request()->post('avatar'));
-                    $dat    = self::getImage($avatar);
+                $avatar = str_replace('/132' , '/0' , request()->post('avatar'));
+                $dat    = self::getImage($avatar);
                 $url = Qiniu::upload('user' , $dat);
                 $model->avatar = $url['host_url'];
                 $model->ip    = request ()->getClientIp ();
