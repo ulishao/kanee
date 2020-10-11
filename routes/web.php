@@ -55,6 +55,7 @@ Route::get ('user/getlike', 'UserController@getlike');
 Route::get('user/getlike1', 'UserController@getlike1');
 Route::post('user/is_like', 'UserController@is_like');
 Route::get('home', 'HomeController@index');
+Route::get('plus', 'PlusController@index');
 
 /**
  * 卡片
