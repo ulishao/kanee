@@ -4,13 +4,33 @@ namespace App\Http\Controllers;
 
 
 use App\Libs\Qiniu\Qiniu;
-use App\Libs\ucloud\ucloud;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class ImageController extends Controller
 {
+    public function post(Request $request)
+    {
+//        $user_id = Auth::id();
+        $avatar = $request->file('image')->store('/public/' . date('Y-m-d') . '/transformation');
+        //上传的头像字段avatar是文件类型地址
+        $avatar = Storage::url($avatar);//就是很简单的一个步骤
+        //
 
+        dd($avatar);
+//        $resource = Resource::create(['type' => 1, 'resource' => $avatar, 'user_id' => $user_id]);
+//        if ($resource) {
+//            return $this->responseForJson(ERR_OK, 'upload success');
+//        }
+//        return $this->responseForJson(ERR_EDIT, 'upload fails');
+//        dd( $request->file('image'),$request->file());
+    }
+    public function home()
+    {
+        return view('home');
+    }
 
     /**
      * 上传图片
